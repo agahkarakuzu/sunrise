@@ -1,5 +1,5 @@
 [Application]
-defaultName = VTR sunrise
+defaultName = NORAH JONES
 interface = lib:threeplane.ui
 continuous = 0
 sharedSlot = Real-Time
@@ -30,7 +30,7 @@ associatedRF = excitation
 type = waveform
 file = SpoilerGradient.spv
 
-[tiploop]
+[trloop]
 type = loop
 maximumIndex = 4
 loopIndex  = 1

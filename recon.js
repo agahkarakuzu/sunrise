@@ -146,7 +146,7 @@ function ExportBlock(input){
     "geometry.FieldOfViewX",
     "geometry.FieldOfViewY",
     "geometry.FieldOfViewZ",
-    "mri.FlipIndex", // Ensured that this one will change per run.
+    "mri.RepeatIndex", // Ensured that this one will change per run.
     "mri.SubjectBIDS",
     "mri.SessionBIDS",
     "mri.AcquisitionBIDS",
@@ -185,17 +185,17 @@ this.imageExport.observeKeys([
   "mri.SubjectBIDS",
   "mri.SessionBIDS",
   "mri.AcquisitionBIDS",
-  "mri.FlipIndex"
+  "mri.RepeatIndex"
 ]);
 
 this.imageExport.observedKeysChanged.connect(function(keys){
 
     var exportDirectory = "/home/agah/Desktop/AgahHV/";
-    var flipIndex = keys["mri.FlipIndex"];
+    var RepeatIndex = keys["mri.RepeatIndex"];
     var subjectBIDS  = "sub-" + keys["mri.SubjectBIDS"];
     var sessionBIDS = (keys["mri.SessionBIDS"]) ? "_ses-" + keys["mri.SessionBIDS"] : "";
     var acquisitionBIDS = (keys["mri.AcquisitionBIDS"]) ? "_acq-" + keys["mri.AcquisitionBIDS"] : "";
-    var exportFileName  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_flip-" + flipIndex + "_VFAT1.dat";
+    var exportFileName  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_tr-" + RepeatIndex + "_NORAHJONES.dat";
     that.imageExport.setFileName(exportFileName);
 
   });
@@ -206,14 +206,14 @@ this.imageExport.observedKeysChanged.connect(function(keys){
   //                              "mri.AcquisitionBIDS"  
   //]);
   //this.imageExport.observedKeysChanged(function(keys){
-  //  var flipIndex = keys["mri.RunNumber"] + 1;
+  //  var RepeatIndex = keys["mri.RunNumber"] + 1;
   //  var subjectBIDS  = "sub-" + keys["mri.SessionBIDS"]; 
   //  var sessionBIDS = (keys["mri.SessionBIDS"]!=="") ? "_ses-" + keys["mri.SessionBIDS"] : "";
   //  var acquisitionBIDS = (keys["mri.AcquisitionBIDS"]!=="") ? "_acq-" + keys["mri.AcquisitionBIDS"] : "";
   //});
 
   //var exportDirectory = "/home/agah/Desktop/AgahHV/";
-  //var exportFileName  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_flip-" + flipIndex + '_VFAT1.dat';
+  //var exportFileName  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_flip-" + RepeatIndex + '_VFAT1.dat';
   this.imageExport.objectName = "save_image";
   
   this.imageExport.setInput(input);
