@@ -320,7 +320,7 @@ var smallAngleCommand = new  RthUpdateFloatParameterCommand(sequenceId, "excitat
 
 var tr1Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 10100);
 var tr2Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 12900);
-var tr3Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 18630);
+var tr3Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.8530);
 var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13450);
 
 //rth.addCommand(new RthUpdateChangeMRIParameterCommand(sequenceId,{

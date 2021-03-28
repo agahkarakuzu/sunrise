@@ -55,10 +55,10 @@
 					<key>anchoredToSBKey</key>
 					<string>&lt;Slice Select Gradient&gt;.plateauRefocusPoint</string>
 					<key>position</key>
-					<real>0.57841551303863525</real>
+					<real>0.74389702081680298</real>
 				</dict>
 				<key>duration</key>
-				<real>1.030517578125</real>
+				<real>0.87864220142364502</real>
 				<key>editableName</key>
 				<string>Sinc RF</string>
 				<key>enforceRFLimit</key>
@@ -74,7 +74,7 @@
 				<key>rfPhase_0_0</key>
 				<real>90</real>
 				<key>timeBandwidth</key>
-				<real>8</real>
+				<real>6.5788908004760742</real>
 				<key>tip</key>
 				<real>20</real>
 				<key>window</key>
@@ -99,11 +99,11 @@
 				<key>hasRewinder</key>
 				<integer>1</integer>
 				<key>netArea</key>
-				<real>4.2451457977294922</real>
+				<real>4.4297113418579102</real>
 				<key>plateauDuration</key>
-				<real>1.030517578125</real>
+				<real>0.87864220142364502</real>
 				<key>plateauRefocusOffset</key>
-				<real>0.5152587890625</real>
+				<real>0.43932110071182251</real>
 				<key>pluginClass</key>
 				<string>SBSliceSelectGradient</string>
 				<key>pluginName</key>
@@ -117,9 +117,9 @@
 				<key>rfPulse</key>
 				<string>Sinc RF</string>
 				<key>tbw</key>
-				<real>8</real>
+				<real>6.5788908004760742</real>
 				<key>thickness</key>
-				<real>50</real>
+				<real>10</real>
 				<key>x0Component</key>
 				<real>0.0</real>
 				<key>xPlateauOverlap</key>
@@ -207,13 +207,13 @@
 	<key>mainWindowFrame</key>
 	<dict>
 		<key>height</key>
-		<integer>716</integer>
+		<integer>733</integer>
 		<key>width</key>
-		<integer>1199</integer>
+		<integer>1152</integer>
 		<key>x</key>
-		<integer>17</integer>
+		<integer>200</integer>
 		<key>y</key>
-		<integer>61</integer>
+		<integer>44</integer>
 	</dict>
 	<key>maxReadoutRate</key>
 	<real>500</real>
@@ -243,7 +243,7 @@
 			<key>showYValues</key>
 			<integer>0</integer>
 			<key>viewBottom</key>
-			<real>-134</real>
+			<real>-117</real>
 			<key>viewHeight</key>
 			<real>776</real>
 			<key>viewLeft</key>
@@ -271,11 +271,11 @@
 			<key>showValues</key>
 			<integer>0</integer>
 			<key>viewBottom</key>
-			<real>-145.015625</real>
+			<real>218.2421875</real>
 			<key>viewHeight</key>
 			<real>421</real>
 			<key>viewLeft</key>
-			<real>458.26171875</real>
+			<real>-129.96875</real>
 			<key>viewWidth</key>
 			<real>395.8046875</real>
 		</dict>
@@ -291,7 +291,7 @@
 			<key>pluginVersion</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>96.5</real>
+			<real>113.5</real>
 			<key>viewHeight</key>
 			<real>48</real>
 			<key>viewLeft</key>
@@ -311,7 +311,7 @@
 			<key>pluginVersion</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>489</real>
+			<real>506</real>
 			<key>viewHeight</key>
 			<real>153</real>
 			<key>viewLeft</key>
@@ -355,7 +355,7 @@
 	<key>timeWithinTr</key>
 	<real>2.009998083114624</real>
 	<key>tr</key>
-	<real>1.5285106897354126</real>
+	<real>2.526839017868042</real>
 	<key>trNum</key>
 	<integer>0</integer>
 	<key>waveSamplingRate</key>
