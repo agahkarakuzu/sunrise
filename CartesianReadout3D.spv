@@ -137,7 +137,7 @@
 				<key>pluginVersion</key>
 				<integer>1</integer>
 				<key>res</key>
-				<integer>1</integer>
+				<integer>5</integer>
 				<key>x0Component</key>
 				<real>0.0</real>
 				<key>xDurationOverlap</key>
@@ -174,7 +174,7 @@
 				<key>pluginVersion</key>
 				<integer>1</integer>
 				<key>res</key>
-				<integer>1</integer>
+				<integer>5</integer>
 				<key>x0Component</key>
 				<real>0.0</real>
 				<key>xDurationOverlap</key>
@@ -244,7 +244,7 @@
 				<key>pluginVersion</key>
 				<integer>1</integer>
 				<key>repetitions</key>
-				<integer>1</integer>
+				<integer>5</integer>
 			</dict>
 			<dict>
 				<key>editableName</key>
@@ -344,7 +344,7 @@
 		<key>width</key>
 		<integer>1280</integer>
 		<key>x</key>
-		<integer>-27</integer>
+		<integer>25</integer>
 		<key>y</key>
 		<integer>44</integer>
 	</dict>
@@ -538,11 +538,11 @@
 	<key>t2</key>
 	<real>150</real>
 	<key>timeWithinTr</key>
-	<real>623.48131347656249</real>
+	<real>0.44131347656249997</real>
 	<key>tr</key>
 	<real>1.7539999485015869</real>
 	<key>trNum</key>
-	<integer>99</integer>
+	<integer>453</integer>
 	<key>waveSamplingRate</key>
 	<real>50</real>
 	<key>xPosition</key>
