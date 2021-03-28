@@ -32,5 +32,5 @@ file = SpoilerGradient.spv
 
 [trloop]
 type = loop
-maximumIndex = 12
+maximumIndex = 8
 loopIndex=1
