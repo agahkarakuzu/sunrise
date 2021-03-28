@@ -343,4 +343,4 @@ var updateGroup4 = new RthUpdateGroup([tr4Command, infoCommand4]);
 
 var loopCommands = [updateGroup1, updateGroup2,updateGroup3,updateGroup4];
 
-rth.setLoopCommands(sequenceId, "trloop", loopCommands);
+//rth.setLoopCommands(sequenceId, "trloop", loopCommands);

@@ -29,8 +29,3 @@ associatedRF = excitation
 [spoiler]
 type = waveform
 file = SpoilerGradient.spv
-
-[trloop]
-type = loop
-maximumIndex = 4
-loopIndex  = 1
