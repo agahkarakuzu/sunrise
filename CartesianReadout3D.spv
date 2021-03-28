@@ -129,7 +129,7 @@
 				<key>editableName</key>
 				<string>Phase Encode Gradient</string>
 				<key>fov</key>
-				<real>6</real>
+				<real>1</real>
 				<key>pluginClass</key>
 				<string>SBPhaseEncodeGradient</string>
 				<key>pluginName</key>
@@ -166,7 +166,7 @@
 				<key>editableName</key>
 				<string>Phase Encode Gradient 1</string>
 				<key>fov</key>
-				<real>6</real>
+				<real>1</real>
 				<key>pluginClass</key>
 				<string>SBPhaseEncodeGradient</string>
 				<key>pluginName</key>
@@ -276,18 +276,24 @@
 				<integer>1</integer>
 			</dict>
 			<dict>
-				<key>duration</key>
-				<real>1</real>
 				<key>editableName</key>
-				<string>Preacquisitions</string>
+				<string>Reorder</string>
 				<key>granularity</key>
 				<integer>1</integer>
+				<key>order</key>
+				<integer>4</integer>
 				<key>pluginClass</key>
-				<string>SBPreacquisitionPlugin</string>
+				<string>SBReorderPlugin</string>
 				<key>pluginName</key>
-				<string>Preacquisitions</string>
+				<string>Reorder</string>
 				<key>pluginVersion</key>
 				<integer>1</integer>
+				<key>seed0</key>
+				<integer>17767</integer>
+				<key>seed1</key>
+				<integer>9158</integer>
+				<key>seed2</key>
+				<integer>39017</integer>
 			</dict>
 		</array>
 		<key>numGradAxes</key>
@@ -334,13 +340,13 @@
 	<key>mainWindowFrame</key>
 	<dict>
 		<key>height</key>
-		<integer>983</integer>
+		<integer>733</integer>
 		<key>width</key>
-		<integer>1625</integer>
+		<integer>1280</integer>
 		<key>x</key>
-		<integer>78</integer>
+		<integer>-27</integer>
 		<key>y</key>
-		<integer>52</integer>
+		<integer>44</integer>
 	</dict>
 	<key>maxReadoutRate</key>
 	<real>500</real>
@@ -370,7 +376,7 @@
 			<key>showYValues</key>
 			<integer>0</integer>
 			<key>viewBottom</key>
-			<real>651</real>
+			<real>401</real>
 			<key>viewHeight</key>
 			<real>253</real>
 			<key>viewLeft</key>
@@ -398,7 +404,7 @@
 			<key>showValues</key>
 			<integer>0</integer>
 			<key>viewBottom</key>
-			<real>213.0625</real>
+			<real>-37</real>
 			<key>viewHeight</key>
 			<real>402</real>
 			<key>viewLeft</key>
@@ -418,7 +424,7 @@
 			<key>pluginVersion</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>756</real>
+			<real>506</real>
 			<key>viewHeight</key>
 			<real>153</real>
 			<key>viewLeft</key>
@@ -438,7 +444,7 @@
 			<key>pluginVersion</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>667</real>
+			<real>417</real>
 			<key>viewHeight</key>
 			<real>251</real>
 			<key>viewLeft</key>
@@ -466,9 +472,9 @@
 			<key>showValues</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>7.2734375</real>
+			<real>-243</real>
 			<key>viewHeight</key>
-			<real>689.7265625</real>
+			<real>690</real>
 			<key>viewLeft</key>
 			<real>493.55078125</real>
 			<key>viewWidth</key>
@@ -490,7 +496,7 @@
 			<key>pluginVersion</key>
 			<integer>1</integer>
 			<key>viewBottom</key>
-			<real>392.0625</real>
+			<real>142</real>
 			<key>viewHeight</key>
 			<real>223</real>
 			<key>viewLeft</key>
@@ -532,11 +538,11 @@
 	<key>t2</key>
 	<real>150</real>
 	<key>timeWithinTr</key>
-	<real>621.7213134765625</real>
+	<real>623.48131347656249</real>
 	<key>tr</key>
 	<real>1.7539999485015869</real>
 	<key>trNum</key>
-	<integer>100</integer>
+	<integer>99</integer>
 	<key>waveSamplingRate</key>
 	<real>50</real>
 	<key>xPosition</key>

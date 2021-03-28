@@ -332,7 +332,7 @@ var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR"
 
 var infoCommand1 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 10.1, RepeatIndex: "01"});
 var infoCommand2 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 12.9, RepeatIndex: "02"});
-var infoCommand3 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 18.63, RepeatIndex: "03"});
+var infoCommand3 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 8.53, RepeatIndex: "03"});
 var infoCommand4 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 13.45, RepeatIndex: "04"});
 
 
