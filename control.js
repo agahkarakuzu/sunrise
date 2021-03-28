@@ -321,7 +321,16 @@ var smallAngleCommand = new  RthUpdateFloatParameterCommand(sequenceId, "excitat
 var tr1Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 11100);
 var tr2Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13900);
 var tr3Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
-var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 14450);
+var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
+var tr5Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 11100);
+var tr6Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13900);
+var tr7Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
+var tr8Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
+var tr9Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 11100);
+var tr10Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13900);
+var tr11Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
+var tr12Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 14450);
+
 
 //rth.addCommand(new RthUpdateChangeMRIParameterCommand(sequenceId,{
 //  SubjectBIDS: controlWidget.subjectBIDS.text,
@@ -339,8 +348,17 @@ var infoCommand4 = new RthUpdateChangeMRIParameterCommand(sequenceId,{Repetition
 var updateGroup1 = new RthUpdateGroup([tr1Command, infoCommand1]);
 var updateGroup2 = new RthUpdateGroup([tr2Command, infoCommand2]);
 var updateGroup3 = new RthUpdateGroup([tr3Command, infoCommand3]);
-var updateGroup4 = new RthUpdateGroup([tr4Command, infoCommand4]);
+var updateGroup4 = new RthUpdateGroup([tr4Command, infoCommand3]);
+var updateGroup5 = new RthUpdateGroup([tr5Command, infoCommand1]);
+var updateGroup6 = new RthUpdateGroup([tr6Command, infoCommand2]);
+var updateGroup7 = new RthUpdateGroup([tr7Command, infoCommand3]);
+var updateGroup8 = new RthUpdateGroup([tr8Command, infoCommand3]);
+var updateGroup9 = new RthUpdateGroup([tr9Command, infoCommand1]);
+var updateGroup10 = new RthUpdateGroup([tr10Command, infoCommand2]);
+var updateGroup11 = new RthUpdateGroup([tr11Command, infoCommand3]);
+var updateGroup12 = new RthUpdateGroup([tr12Command, infoCommand4]);
 
-var loopCommands = [updateGroup1, updateGroup2,updateGroup3,updateGroup4];
+
+var loopCommands = [updateGroup1, updateGroup2,updateGroup3,updateGroup4,updateGroup5,updateGroup6,updateGroup7,updateGroup8,updateGroup9,updateGroup10,updateGroup11,updateGroup12];
 
 rth.setLoopCommands(sequenceId, "trloop", loopCommands);
