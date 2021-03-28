@@ -318,10 +318,10 @@ var bigAngleCommand = new  RthUpdateFloatParameterCommand(sequenceId, "excitatio
 // Following sets FlipAngle to 3 when FA1 = 30 and FA2=25 
 var smallAngleCommand = new  RthUpdateFloatParameterCommand(sequenceId, "excitation", "scaleRF", "", flipAngle2/flipAngle1);
 
-var tr1Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 10100);
-var tr2Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 12900);
-var tr3Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.8530);
-var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13450);
+var tr1Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 11100);
+var tr2Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 13900);
+var tr3Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 0.9600);
+var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR", "", 14450);
 
 //rth.addCommand(new RthUpdateChangeMRIParameterCommand(sequenceId,{
 //  SubjectBIDS: controlWidget.subjectBIDS.text,
@@ -330,10 +330,10 @@ var tr4Command = new RthUpdateIntParameterCommand(sequenceId, "", "setDesiredTR"
 //}));
 
 
-var infoCommand1 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 10.1, RepeatIndex: "01"});
+var infoCommand1 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 13.1, RepeatIndex: "01"});
 var infoCommand2 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 12.9, RepeatIndex: "02"});
-var infoCommand3 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 8.53, RepeatIndex: "03"});
-var infoCommand4 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 13.45, RepeatIndex: "04"});
+var infoCommand3 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 9.60, RepeatIndex: "03"});
+var infoCommand4 = new RthUpdateChangeMRIParameterCommand(sequenceId,{RepetitionTime: 14.45, RepeatIndex: "04"});
 
 
 var updateGroup1 = new RthUpdateGroup([tr1Command, infoCommand1]);
@@ -343,4 +343,4 @@ var updateGroup4 = new RthUpdateGroup([tr4Command, infoCommand4]);
 
 var loopCommands = [updateGroup1, updateGroup2,updateGroup3,updateGroup4];
 
-//rth.setLoopCommands(sequenceId, "trloop", loopCommands);
+rth.setLoopCommands(sequenceId, "trloop", loopCommands);
