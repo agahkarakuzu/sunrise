@@ -62,6 +62,23 @@ function reconBlock(input) {
   }
 );
 
+  this.rawSplit = new RthReconRawSplitter();
+  this.rawSplit.objectName = "Split for TR ";
+  this.rawSplit.setInput(this.sort3d.output());
+
+  this.fft = new RthReconImageFFT();
+  this.fft.objectName = "FFT(" + ")";
+  this.fft.setInput(this.rawSplit.output(-1));
+
+  this.output = function() {
+  return this.fft.output();
+  };
+
+  this.rawOutput = function() {
+    return this.rawSplit.output(-1);
+  };
+
+
   //this.sort = RthReconSort();
   //this.sort.setIndexKeys(["acquisition.index"]);
   //this.sort.setInput(input);
@@ -77,17 +94,15 @@ function reconBlock(input) {
   //});
   //this.sort.setExtent([256,256])
   //this.sort.setAccumulate(2*256);
-  this.fft = new RthReconImageFFT();
-  this.fft.setInput(this.sort3d.output());
 
-  this.output = function() {
-  return this.fft.output();
-  };
+
 }
 
 // For each `coil we need sort and FFT.
 
 var sos = new RthReconImageSumOfSquares();
+var pack = new RthReconImagePack();
+
 var block  = [];
 
 function connectCoils(coils){
@@ -95,6 +110,7 @@ function connectCoils(coils){
   for (var i = 0; i<coils; i++){
     block[i] = new reconBlock(observer.output(i));
     sos.setInput(i,block[i].output());
+    pack.setInput(i,block[i].rawOutput());
   }
  rth.collectGarbage();
 }
@@ -103,7 +119,7 @@ observer.coilsChanged.connect(connectCoils);
 
 rth.importJS("lib:RthImageThreePlaneOutput.js");
 
-function ExportBlock(input){
+function ExportBlock(input,inputRaw){
 
   var that = this;
 
@@ -199,6 +215,26 @@ this.imageExport.observedKeysChanged.connect(function(keys){
     that.imageExport.setFileName(exportFileName);
 
   });
+
+  this.imageExportRaw = new RthReconImageExport();
+  this.imageExportRaw.objectName = "save_raw"
+
+  this.imageExportRaw.observeKeys([
+    "mri.SubjectBIDS",
+    "mri.SessionBIDS",
+    "mri.AcquisitionBIDS",
+    "mri.RepeatIndex"
+  ]);
+
+  this.imageExportRaw.observedKeysChanged.connect(function(keys){
+    var RepeatIndex = keys["mri.RepeatIndex"];
+    var exportDirectory = "/home/agah/Desktop/AgahHV/";
+    var subjectBIDS  = "sub-" + keys["mri.SubjectBIDS"];
+    var sessionBIDS = (keys["mri.SessionBIDS"]) ? "_ses-" + keys["mri.SessionBIDS"] : "";
+    var acquisitionBIDS = (keys["mri.AcquisitionBIDS"]) ? "_acq-" + keys["mri.AcquisitionBIDS"] : "";
+    var exportFileNameRaw  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_tr-" + RepeatIndex + "_NORAHJONES_raw.dat";
+    that.imageExportRaw.setFileName(exportFileNameRaw);
+  });
   
   //this.imageExport.observeKeys(["mri.RunNumber", // Ensured that this one will change per run.
   //                              "mri.SubjectBIDS",
@@ -217,6 +253,7 @@ this.imageExport.observedKeysChanged.connect(function(keys){
   this.imageExport.objectName = "save_image";
   
   this.imageExport.setInput(input);
+  this.imageExportRaw.setInput(inputRaw);
   
   RTHLOGGER_WARNING("saving...");
 
@@ -234,4 +271,4 @@ splitter.setInput(sos.output());
 var threePlane = new RthImageThreePlaneOutput();
 threePlane.setInput(splitter.output(0));
 
-var exporter  = new ExportBlock(splitter.output(1));
+var exporter  = new ExportBlock(splitter.output(1),pack.output());
