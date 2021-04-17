@@ -1,8 +1,9 @@
 /*
-================== qMRLab vfa_t1 pulse sequence = 
-This script is responsible for collecting raw data 
-and reconstructing images. 
- 
+NOt RApid Honestly, JOyful NeverthelESs: NORAH JONES
+
+This script is responsible for observing raw data,
+reconstructing images and saving ks.
+
 Waveforms exported by SpinBench and described by application.apd
 determine the initial state of the sequence. For this 
 application, initial parameters are fetched from: 
@@ -18,8 +19,17 @@ For now, base resolution components are hardcoded to be
 
 TODO: These parameters are to be fetched from controller. 
 
+If you happen to have RTHawk and would like to reproduce this
+sequence (wow, that's a thing), just create a folder named 
+SUNRISE on your Ubuntu desktop and the outputs will be saved there.
+
+RTH version: 2.5.2-3423-g7edfaf413c
+
+Adapted from qMRLab VFA-T1 pulse sequence: 
+https://github.com/qMRLab/pulse_sequences 
+
 Author:  Agah Karakuzu agahkarakuzu@gmail.com
-Created: October, 2019. 
+Created: April 2021
 // =================================================
 */
 
@@ -78,22 +88,6 @@ function reconBlock(input) {
     return this.rawSplit.output(-1);
   };
 
-
-  //this.sort = RthReconSort();
-  //this.sort.setIndexKeys(["acquisition.index"]);
-  //this.sort.setInput(input);
-  //this.sort.setUseSliceEncodeKey(false);
-  //this.sort.setSwapSePe(true);
-  //this.sort.observeKeys(["acquisition.slice", "acquisition.index"]);
-  //this.sort.observedKeysChanged.connect(function(keys){
-    //RTHLOGGER_WARNING("Slice" + keys["acquisition.slice"] + "index" + keys["acquisition.index"]);
-  //});
-  //this.sort.observeKeys(["acquisition.<Repeat 1>.index"]);
-  //this.sort.observedKeysChanged.connect(function(keys){
-  //  RTHLOGGER_WARNING("Slice" + keys["acquisition.<Repeat 1>.index"]);
-  //});
-  //this.sort.setExtent([256,256])
-  //this.sort.setAccumulate(2*256);
 
 
 }
@@ -206,7 +200,7 @@ this.imageExport.observeKeys([
 
 this.imageExport.observedKeysChanged.connect(function(keys){
 
-    var exportDirectory = "/home/agah/Desktop/AgahHV/";
+    var exportDirectory = "~/Desktop/SUNRISE/";
     var RepeatIndex = keys["mri.RepeatIndex"];
     var subjectBIDS  = "sub-" + keys["mri.SubjectBIDS"];
     var sessionBIDS = (keys["mri.SessionBIDS"]) ? "_ses-" + keys["mri.SessionBIDS"] : "";
@@ -228,7 +222,7 @@ this.imageExport.observedKeysChanged.connect(function(keys){
 
   this.imageExportRaw.observedKeysChanged.connect(function(keys){
     var RepeatIndex = keys["mri.RepeatIndex"];
-    var exportDirectory = "/home/agah/Desktop/AgahHV/";
+    var exportDirectory = "~/Desktop/SUNRISE/";
     var subjectBIDS  = "sub-" + keys["mri.SubjectBIDS"];
     var sessionBIDS = (keys["mri.SessionBIDS"]) ? "_ses-" + keys["mri.SessionBIDS"] : "";
     var acquisitionBIDS = (keys["mri.AcquisitionBIDS"]) ? "_acq-" + keys["mri.AcquisitionBIDS"] : "";
@@ -236,20 +230,6 @@ this.imageExport.observedKeysChanged.connect(function(keys){
     that.imageExportRaw.setFileName(exportFileNameRaw);
   });
   
-  //this.imageExport.observeKeys(["mri.RunNumber", // Ensured that this one will change per run.
-  //                              "mri.SubjectBIDS",
-  //                              "mri.SessionBIDS",
-  //                              "mri.AcquisitionBIDS"  
-  //]);
-  //this.imageExport.observedKeysChanged(function(keys){
-  //  var RepeatIndex = keys["mri.RunNumber"] + 1;
-  //  var subjectBIDS  = "sub-" + keys["mri.SessionBIDS"]; 
-  //  var sessionBIDS = (keys["mri.SessionBIDS"]!=="") ? "_ses-" + keys["mri.SessionBIDS"] : "";
-  //  var acquisitionBIDS = (keys["mri.AcquisitionBIDS"]!=="") ? "_acq-" + keys["mri.AcquisitionBIDS"] : "";
-  //});
-
-  //var exportDirectory = "/home/agah/Desktop/AgahHV/";
-  //var exportFileName  = exportDirectory + subjectBIDS + sessionBIDS + acquisitionBIDS + "_flip-" + RepeatIndex + '_VFAT1.dat';
   this.imageExport.objectName = "save_image";
   
   this.imageExport.setInput(input);

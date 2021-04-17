@@ -1,8 +1,31 @@
 /*
-================== qMRLab vfa_t1 pulse sequence = 
+==================
 This is the controller script which is responsible for 
 passing the variables between the GUI (control.ui) and 
-RTHawk's sequencing engine.    
+RTHawk's sequencing engine.
+
+NOt RApid Honestly, JOyful NeverthelESs: NORAH JONES
+
+This is a simple RTHawk application that loops over 4 TRs 
+to acquire a single slice at each iteration. TRs and TE are 
+adjusted such that the acoustic noise resembles the key signatures 
+of 4 chords in Sunrise by Norah Jones. TE is set to 5ms: 
+- A#2 (added 7th minor) at 116Hz ~ 13.9ms TR 
+- C3  (major) at 130Hz ~ 11.1ms  TR 
+- G#2 (major) at 103Hz ~ 14.45ms TR
+- D#2 (major) at 155Hz ~ 9.6ms   TR
+
+I literally played it by ear. Figuring our chords from a power spectrum
+analysis is a really tricky business. If only Fazil Say was an MRI scientist though...
+In addition, songs are not forgiving about messing up their time signature. 
+If MRI is about resonance in freq domain, songs are about consonance in time domain.
+
+To play different notes, I changed TRs, which changes chord durations per bar
+(bar=TR of a music). But that's the whole point, because this experimental 
+sequence is intended for producing teachning material for a Python 
+course. Some array slicing, ffts and pitch corrections. Time to put your DSP skills
+in good use! Besides, if it is OK for singers to use autotune, it is more than OK for us
+to use Python to pitch correct acoustic noise our scanners make.
 
 Waveforms exported by SpinBench and described by application.apd
 determine the initial state of the sequence. For this 
@@ -13,8 +36,17 @@ application, initial parameters are fetched from:
 - [readout] 3D Cartesian Readout (CartesianReadout3D.spv)
 - [spoiler] Area Trapezoid  (SpoilerGradient.spv)
 
+If you happen to have RTHawk and would like to reproduce this
+sequence (wow, that's a thing), just create a folder named 
+SUNRISE on your Ubuntu desktop and the outputs will be saved there.
+
+RTH version: 2.5.2-3423-g7edfaf413c
+
+Adapted from qMRLab VFA-T1 pulse sequence: 
+https://github.com/qMRLab/pulse_sequences 
+
 Author:  Agah Karakuzu agahkarakuzu@gmail.com
-Created: October, 2019. 
+Created: April 2021
 // =================================================
 */
 
@@ -201,6 +233,7 @@ rth.addCommand(new RthUpdateChangeMRIParameterCommand(sequenceId,{
   NumberOfCoils: parameterList[2],
   FlipAngle1:flipAngle1,
   FlipAngle2: flipAngle2,
+  FlipAngle: 20,
   PreAcqDuration: SB.readout["<Preacquisitions>.duration"]
 }));
 

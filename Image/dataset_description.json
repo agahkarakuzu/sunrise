@@ -1,0 +1,30 @@
+{
+	"Name": "ISMRM - Scientific Computing for Python",
+	"BIDSVersion": "1.5.0",
+	"DatasetType": "raw",
+	"License": "CC0",
+	"Authors": [
+	  "Agah Karakuzu",
+	  "Nikola Stikov"
+	],
+	"Acknowledgements": "Special thanks to all the participants who are curious enough to read this file.",
+	"HowToAcknowledge": "Stargaze this repository maybe?",
+	"Funding": [
+	  "TransMedTech Institute in Ecole Polytechnique de Montreal",
+	  "Canadian Open Neuroscience Platform (CONP)",
+	  "International Society of Magnetic Resonance in Medicine",
+	  "Quebec Bioimaging Network (QBIN)",
+	  "Institut de valorisation des données (IVADO)",
+	  "Courtois NeuroMod"
+	],
+	"EthicsApprovals": [
+	  "Phantom Ethics Committee - CASPER:2021-boo"
+	],
+	"ReferencesAndLinks": [
+	  "https://www.neuro.polymtl.ca/doku.php",
+	  "https://qmrlab.org",
+	  "https://agahkarakuzu.github.io"
+	],
+	"DatasetDOI": "",
+	"HEDVersion": ""
+  }
