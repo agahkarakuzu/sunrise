@@ -1,0 +1,3 @@
+python-pydot
+python-pydot-ng
+graphviz
