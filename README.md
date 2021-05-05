@@ -1,16 +1,21 @@
-## Introduction to scientific computing in Python with The XX - Intro (MRI cover)
+# Scientific computing with Python
+
+Course material presented at [ISMRM 2021 Sunrise Educational Session](https://www.ismrm.org/21/program-files/T-30.htm) for Python Programming & Scientific Computing.
+
 [![](assets/cover.png)](https://www.youtube.com/watch?v=XX0UGblIwMM)
 
-### 3 Notebooks for 3 dimensions of MRI
+🎶 [The XX - Intro | MRI edition](https://www.youtube.com/watch?v=XX0UGblIwMM)
+
+### 📚 3 Notebooks for 3 dimensions of MRI
 
 * [1D-MUSIC.ipynb](/1D-MUSIC.ipynb) for basic NumPy operations and SciPy functions to create harmonious MRI melodies.
 * [2D-BIDS.ipynb](/1D-MUSIC.ipynb) for querying reconstructed images using BIDS layout, loading them using `nibabel`, `parsing them` using `NumPy` and creating interactive plots using `Plotly`.
 * [3D-ISMRMD.ipynb](/1D-MUSIC.ipynb) for reading ISMRM-RD k-space data (16 channels) using `ismrmrd-python`, reconstructing them using `SciPy` and creating interactive plots using `Plotly`.
 
-### You can execute the notebooks online
+### 🕸  You can execute the notebooks online
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD)
 
-### 📥 Instructions for running notebooks on your computer
+### 📥  Instructions for running notebooks on your computer
 
 #### 1. Clone this repository 
 
@@ -20,7 +25,7 @@ git clone https://github.com/agahkarakuzu/sunrise.git
 
 #### 2. Choose one of the following options
 
-<details><summary> <b>💻 Local Python environment</b> </font> </summary><br>
+<details><summary> <b>💻  Local Python environment</b> </font> </summary><br>
 
 ### Python 
 
@@ -51,7 +56,7 @@ sudo apt install libsndfile1
 
 </details>
 
-<details><summary> <b>🐳 Use with Docker</b> </font> </summary><br>
+<details><summary> <b>🐳  Use with Docker</b> </font> </summary><br>
 
 If you have Docker installed on your computer and running, you can run the code 
 in the same environment described in this repository. 
@@ -134,9 +139,9 @@ There are hundreds of free Python courses online to learn about NumPy and SciPy.
    * **Shopping** The ingredients we need to work with MRI data are sold in certain formats (DICOM, NIfTI, BIDS, ISMRM-RD etc.) in the marketplace. Without knowing the basics about these ingredients, we can't cook.
    * **Mise en place** Depending on our research question or application, we often need to dice and slice our data in different ways. `NumPy` is the brand of our chef's knife and all the utensils to put everything in place. 
    * **SciPy culinary academy** You can imagine `SciPy` (or any other Python package) as a culinary academy of Michelin Star Chefs, who are willing to cook your meal for free, if you did the preparation.
-   * **Share** Everything tastes better when you share. IMHO, sharing our MRI processing recipe with others is a requirement rather than a choice. It is always good to know what you eat. 
+   * **Share** Everything tastes better when you share. IMHO, sharing our MRI processing recipe with others is a requirement rather than a choice. **It is always good to know what you eat.**
    
-   ![](https://i.gifer.com/WTIm.gif)
+![](https://i.gifer.com/WTIm.gif)
 
    To that end, I equipped this repository with some tools to foster transparency & reproducibility.
 
