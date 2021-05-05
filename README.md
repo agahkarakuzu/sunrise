@@ -1,86 +1,47 @@
+## Introduction to scientific computing in Python with The XX - Intro (MRI cover)
+[![](assets/cover.png)](https://www.youtube.com/watch?v=XX0UGblIwMM)
+
+### You can execute the notebooks online
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD)
 
-## 📥 Installation instructions 
+### 📥 Instructions for running notebooks on your computer
 
-<details><summary> <b>💻 Install locally</b> </font> </summary><br>
-
-### MATLAB
-
-You can execute the scripts in this repository in MATLAB > `R2016b`. Tested in `R2018b`.
-
-Required toolboxes: 
-- Image processing toolbox
-
-### Octave
-
-The scripts in this repository are Octave >`v4.0.3` compatible. Tested in `v4.2.2.`. 
-Required packages:
-- Image 
-
-#### Octave installation instructions 
-
-##### OSX 
-
-1. Open your terminal. Skip steps 2 and 3 if you have  [`Homebrew`](https://brew.sh/) 
-installed already.
-2. `sudo xcode-select --install`
-3. Follow [Homebrew's installation instructions](https://brew.sh/).
-4. Ensure that the `brew` is up to date:
-   `brew update`
-5. Install Octave 
-   `brew install octave` 
-
-If you prefer other package managers such as MacPorts or Spack, please visit 
-[Octave's official wiki page](http://wiki.octave.org/Octave_for_macOS) for instructions.
-
-##### Ubuntu 
-
-You can simply install Octave by 
+#### 1. Clone this repository 
 
 ```
-sudo apt-add-repository ppa:octave/stable
-sudo apt-get update
-sudo apt-get install octave
+git clone https://github.com/agahkarakuzu/sunrise.git
 ```
 
-Detailed instructions are available at [Octave's official wiki page](https://wiki.octave.org/Octave_for_Debian_systems).
+#### 2. Choose one of the following options
 
-##### Windows
+<details><summary> <b>💻 Local Python envirronment</b> </font> </summary><br>
 
-Please follow the instructions on [Octave's official wiki page](https://wiki.octave.org/Octave_for_Microsoft_Windows#:~:text=Installers%20for%20Microsoft%20Windows,html%20under%20the%20Windows%20tab.).
+### Python 
 
-#### To use Octave in Jupyter Notebooks 
+If you don't have Python installed on your computer, I highly recommend [Anaconda](https://www.anaconda.com/). Simply follow the instructions on the website to install Anaconda, which comes with Jupyter out of the box. 
 
-1. Make sure that you have Octave installed. 
-2. If you have Conda/Jupyter/pip installed, go to step 4.
-3. Download the [Anaconda Installer](https://www.anaconda.com/products/individual) and install it.
-4. Install [Octave kernel](https://pypi.org/project/octave-kernel/): 
-   ```
-   pip install octave_kernel
-   ```
-5. Run `jupyter notebook` in your terminal. `Octave` should appear on the list
-   for creating a new notebook. 
+Then all you have to do is simply installing Python dependencies using `pip`. In a terminal window:
 
-#### To use MATLAB in Jupyter Notebooks 
+```python
+cd /directory/to/sunrise/on/your/computer
+pip install -r requirements.txt
+```
 
-1. If you dont have Anaconda installed, please download the [Anaconda Installer](https://www.anaconda.com/products/individual) and install it.
-2. Setup the MATLAB Engine API for Python 
-   * Open a terminal 
-   * Navigate to your MATLAB root folder. To find out the root dir, you can run 
-     `matlabroot` command in MATLAB. 
-   * In the MATLAB root directory:
-     ```
-     cd extern/engines/python
-     python setup.py install
-     ```
-3. In terminal run:
-   
-   ```
-   pip install imatlab
-   python -mimatlab install
-   ```
-4. Run `jupyter notebook` in your terminal. `MATLAB` should appear on the list
-   for creating a new notebook. 
+That's all! After installing dependencies, run `jupyter notebook` or `jupyter lab` command in the terminal (while you are still at the `/sunrise` directory. Select a notebook, and start making some music using MRI sounds! 
+
+
+### Potentially missing dependencies 
+
+* If you cannot run Librosa on a Ubuntu OS, you may be missing `libsndfile1` package: 
+
+```terminal
+sudo apt install libsndfile1
+```
+
+* Lolviz package (visualizing arrays using a graphical representation) is optional. You can follow the [official docs](https://github.com/parrt/lolviz) to install its dependencies on different OS.
+
+* I did not test this on a Windows machine, please open an issue if you run into problems.
+
 
 </details>
 
@@ -97,7 +58,7 @@ pip install jupyter-repo2docker
 ```
 2. Run the following command in your terminal:
 ```
-jupyter-repo2docker https://github.com/agahkarakuzu/eda_organized
+jupyter-repo2docker https://github.com/agahkarakuzu/sunrise
 ```
 
 After building (it might take a while!), it should output in your terminal 
@@ -110,7 +71,7 @@ Copy/paste this URL into your browser when you connect for the first time,
 ```
 
 This should start a Jupyter session on your browser and make all the resources 
-you see when you [launch a Binder](https://mybinder.org/v2/gh/agahkarakuzu/eda_organized/master) for this repository. 
+you see when you [launch a Binder](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/main) for this repository. 
 
 To re-use your container built by repo2docker, do the following: 
 
@@ -120,26 +81,61 @@ To re-use your container built by repo2docker, do the following:
 docker run -it --rm -p 8888:8888 `PASTE IMAGE ID HERE` jupyter notebook --ip 0.0.0.0
 ```
 
-### Option 2: Use Docker image built by this repo
+### Option 2: Use Docker image built by this repo's GitHub Actions
 
 This repository builds and pushes its own Docker images on every release! 
 
-You can see the available versions [here](https://hub.docker.com/r/agahkarakuzu/brainhack20). I will give the instructions for the 
+You can see the available versions [here](https://hub.docker.com/r/agahkarakuzu/sunrise). I will give the instructions for the 
 latest version: 
 
 1. Pull the docker image
 ```
-docker pull agahkarakuzu/brainhack20:latest
+docker pull agahkarakuzu/sunrise:latest
 ```
 2. Start the container
 ```
-docker run -it --rm -p 8888:8888 agahkarakuzu/brainhack20:latest
+docker run -it --rm -p 8888:8888 agahkarakuzu/sunrise:latest
 ```
 
 </details>
 
-<details><summary> <b>☁️ Execute online</b> </font> </summary><br>
+## Special thanks 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/eda_organized/master)
+![](https://mir-s3-cdn-cf.behance.net/user/276/fbaf9164170569.5c8d4293cf696.jpg)
 
-</details>
+My friend Bengü Aktas recorded vocals for this project. She's a [singer](https://www.youtube.com/channel/UC2LUEX92eaq_6VQzIAZnnCw/featured) and a [visual artist](https://www.behance.net/profile/benguaktas) who can also modify Si wafer surfaces to create [bio-compatible micro-environments](https://ieeexplore.ieee.org/document/7026352). Thank you Bengü!
+
+## References and useful resources
+
+* [AllenDowney/ThinkDSP](https://github.com/AllenDowney/ThinkDSP) was a great source of inspiration, I highly recommend his [SciPy 2015 talk](https://www.youtube.com/watch?v=0ALKGR0I5MA). 
+
+* The amazing [Pianoputer project](http://zulko.github.io/blog/2014/03/29/soundstretching-and-pitch-shifting-in-python/)
+
+* [Visual NumPy](https://jalammar.github.io/visual-numpy/), [Pictorial Numpy tutorial](https://towardsdatascience.com/reshaping-numpy-arrays-in-python-a-step-by-step-pictorial-tutorial-aed5f471cf0b), [the Visual Guide to NumPy](https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d)
+
+* [Librosa official documentation](https://librosa.org/doc/latest/index.html)
+
+### EarSketch: Make beats & Learn code
+
+I found out about [EarSketch](https://earsketch.gatech.edu/landing/#/) while creating this repository. It allows you to: 
+
+* Learn coding through music
+* Use our sounds or your own (means that you can use files in the [`WavMRI`](/WavMRI) folder!)
+* Learn Python or JavaScript code
+* Produce studio-quality music
+
+All in a web browser. It is a great opportunity to improve your algorithmic thinking skills. You need to create an account and login to be able to upload your sound samples. You can export them to SoundCloud with one click. I gave it a [try](https://soundcloud.com/agah-karakuzu/quick_tour-py), it works!
+
+## Equipment 
+
+* Scanner: 3T Siemens Skyra with RTHawk
+* Microphone: Audio Technica AT2020usb+ 
+* Acoustic guitar: Taylor 114ce
+
+## How to run NORAH JONES pulse sequence on your scanner?
+
+The [pulse sequence](/Sequence) is publicly available. If you have RTHawk real-time imaging platform, you can run it on a Siemens or GE scaner.
+
+The pulse sequence is a simple SPGR with 4 varying TRs played in succession. The sequence can export ISMRM-RD and BIDS compatible raw and reconstructed images. 
+
+Visit [qMRPullseq](https://github.com/qmrlab/pulse_sequences) for other pulse sequences made available for quantitative MRI.

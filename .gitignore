@@ -6,3 +6,5 @@
 /WavMRI
 /WavVocal
 /WavGuitar
+.DS_Store
+.ipynb_checkpoints

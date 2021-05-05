@@ -1,0 +1,16 @@
+on:
+ push:
+  tags:
+   - "v*"
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: BUILD PUSH DOCKER
+        run: sh ./Deploy
+        env:
+          GITHUB_WORKSPACE: ${{github.workspace}}
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASS: ${{secrets.DOCKER_PASS}}
