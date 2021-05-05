@@ -139,11 +139,15 @@ There are hundreds of free Python courses online to learn about NumPy and SciPy.
    * **Shopping** The ingredients we need to work with MRI data are sold in certain formats (DICOM, NIfTI, BIDS, ISMRM-RD etc.) in the marketplace. Without knowing the basics about these ingredients, we can't cook.
    * **Mise en place** Depending on our research question or application, we often need to dice and slice our data in different ways. `NumPy` is the brand of our chef's knife and all the utensils to put everything in place. 
    * **SciPy culinary academy** You can imagine `SciPy` (or any other Python package) as a culinary academy of Michelin Star Chefs, who are willing to cook your meal for free, if you did the preparation.
-   * **Share** Everything tastes better when you share. IMHO, sharing our MRI processing recipe with others is a requirement rather than a choice. **It is always good to know what you eat.**
-   
-![](https://i.gifer.com/WTIm.gif)
+   * **Share** Everything tastes better when you share. IMHO, sharing our MRI processing recipe with others is a requirement rather than a choice. 
 
-   To that end, I equipped this repository with some tools to foster transparency & reproducibility.
+
+<p align="center"> <b>It is always good to know what you eat.</b> </p>
+   
+<p align="center"> <img src="https://i.pinimg.com/originals/f9/f0/1b/f9f01bc7b3436efece0c29cca44cc1e1.gif"> </p>
+
+<p align="center"> To that end, I equipped this repository with some tools to foster transparency & reproducibility. </p>
+
 
 ### Last, but not the least
 
