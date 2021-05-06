@@ -124,7 +124,7 @@ My friend Bengü Aktas recorded vocals for this project. She's a [singer](https:
 
 ## How to run NORAH JONES pulse sequence on your scanner?
 
-The [pulse sequence](/Sequence) is publicly available. If you have RTHawk real-time imaging platform, you can run it on a Siemens or GE scaner.
+The [pulse sequence](/Sequence) is publicly available. If you have RTHawk real-time imaging platform, you can run it on a Siemens or GE scanner.
 
 The pulse sequence is a simple SPGR with 4 varying TRs played in succession. The sequence can export ISMRM-RD and BIDS compatible raw and reconstructed images. 
 
