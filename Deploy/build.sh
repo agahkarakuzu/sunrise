@@ -1,18 +1,8 @@
-if [ -z "${GITHUB_WORKSPACE}" ]; then
-
-    SRC_DIR=$1
-    version=`cat $SRC_DIR/version.txt`
-    DOCKER_USERNAME=$2
-    DOCKER_PASSWORD=$3
-
-else # User will pass qMRLab path 
-    
-    echo Starting build on Azure 
-    SRC_DIR=$GITHUB_WORKSPACE
-    version=`cat $SRC_DIR/version.txt`
-    DOCKER_USERNAME=$DOCKER_USER # YOU NEED TO ADD TO THE GH SECRETS
-    DOCKER_PASSWORD=$DOCKER_PASS # YOU NEED TO ADD TO THE GH SECRETS
-fi
+echo Starting build on Azure 
+SRC_DIR=$GITHUB_WORKSPACE
+version=`cat $SRC_DIR/version.txt`
+DOCKER_USERNAME=$DOCKER_USER # YOU NEED TO ADD TO THE GH SECRETS
+DOCKER_PASSWORD=$DOCKER_PASS # YOU NEED TO ADD TO THE GH SECRETS
 
 echo $version
 USERNAME=agahkarakuzu
