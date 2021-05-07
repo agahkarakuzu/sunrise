@@ -208,3 +208,5 @@ All in a web browser. It is a great opportunity to improve your algorithmic thin
 * [Shimming Toolbox](https://shimming-toolbox.org/en/latest/)
 
 * [AxonDeepSeg](https://github.com/neuropoly/axondeepseg)
+
+Vector illustrations in this project are under Freepik Premium license ag_e843bcd6-ef36-4e61-8669-0d259e2f8371 (Unlimited use without attribution).
