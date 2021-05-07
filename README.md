@@ -4,14 +4,16 @@ Course material presented at [ISMRM 2021 Sunrise Educational Session](https://ww
 
 [![](assets/cover.png)](https://www.youtube.com/watch?v=XX0UGblIwMM)
 
-🎶 [The XX - Intro | MRI edition](https://www.youtube.com/watch?v=XX0UGblIwMM)
+[⏯  The XX - Intro | MRI edition](https://www.youtube.com/watch?v=XX0UGblIwMM)
 
 ### 📚 3 Notebooks for 3 dimensions of MRI
 
 * [1D-MUSIC.ipynb](/1D-MUSIC.ipynb) for basic NumPy operations and SciPy functions to create harmonious MRI melodies.
+![](assets/wave_np.png)
 * [2D-BIDS.ipynb](/1D-MUSIC.ipynb) for querying reconstructed images using BIDS layout, loading them using `nibabel`, `parsing them` using `NumPy` and creating interactive plots using `Plotly`.
+![](assets/notebook_2.png)
 * [3D-ISMRMD.ipynb](/1D-MUSIC.ipynb) for reading ISMRM-RD k-space data (16 channels) using `ismrmrd-python`, reconstructing them using `SciPy` and creating interactive plots using `Plotly`.
-
+![](assets/ismrmrd_structure.png)
 ### 🕸  You can execute the notebooks online
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD)
 
@@ -124,6 +126,7 @@ My friend Bengü Aktas recorded vocals for this project. She's a [singer](https:
 
 ## How to run NORAH JONES pulse sequence on your scanner?
 
+![](assets/sequence_order.gif)
 The [pulse sequence](/Sequence) is publicly available. If you have RTHawk real-time imaging platform, you can run it on a Siemens or GE scanner.
 
 The pulse sequence is a simple SPGR with 4 varying TRs played in succession. The sequence can export ISMRM-RD and BIDS compatible raw and reconstructed images. 
@@ -137,8 +140,11 @@ There are hundreds of free Python courses online to learn about NumPy and SciPy.
 * This one is _artfully_ tailored for MRI scientists. I always wanted to make some music with MRI sounds. I took this opportunity to do it in Python and share it with you.
 * All the notebooks are given in the context of a typical image processing workflow, with an analogy to cooking: 
    * **Shopping** The ingredients we need to work with MRI data are sold in certain formats (DICOM, NIfTI, BIDS, ISMRM-RD etc.) in the marketplace. Without knowing the basics about these ingredients, we can't cook.
-   * **Mise en place** Depending on our research question or application, we often need to dice and slice our data in different ways. `NumPy` is the brand of our chef's knife and all the utensils to put everything in place. 
+   ![](assets/sunrise_market.png)
+   * **Mise en place** Depending on our research question or application, we often need to dice and slice our data in different ways. `NumPy` is the brand of our chef's knife and all the utensils to put everything in place.
+   ![](assets/numpy_step2.png)
    * **SciPy culinary academy** You can imagine `SciPy` (or any other Python package) as a culinary academy of Michelin Star Chefs, who are willing to cook your meal for free, if you did the preparation.
+   ![](assets/scipy_chefs.png)
    * **Share** Everything tastes better when you share. IMHO, sharing our MRI processing recipe with others is a requirement rather than a choice. 
 
 

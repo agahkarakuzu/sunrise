@@ -51,7 +51,7 @@
 	"mri_NumberOfCoils": 48,
 	"mri_PreAcqDuration": null,
 	"mri_RepeatIndex": "01",
-	"mri_RepetitionTime": 13.1,
+	"mri_RepetitionTime": 12.9,
 	"mri_ScanningSequence": "GR",
 	"mri_SequenceName": "qMRLab NORAH JONES",
 	"mri_SequenceVariant": "SS, SP",
