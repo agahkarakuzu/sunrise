@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/asyncio/base_events.py", line 488, in run_until_complete
+    return future.result()
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 536, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+layout = BIDSLayout(data_path)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-3-afa1a2363772>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mlayout[0m [0;34m=[0m [0mBIDSLayout[0m[0;34m([0m[0mdata_path[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/bids/layout/layout.py[0m in [0;36m__init__[0;34m(self, root, validate, absolute_paths, derivatives, config, sources, regex_search, database_path, reset_database, indexer, **indexer_kwargs)[0m
+[1;32m    134[0m [0;34m[0m[0m
+[1;32m    135[0m         [0;31m# Validate that a valid BIDS project exists at root[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 136[0;31m         [0mroot[0m[0;34m,[0m [0mdescription[0m [0;34m=[0m [0mvalidate_root[0m[0;34m([0m[0mroot[0m[0;34m,[0m [0mvalidate[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    137[0m [0;34m[0m[0m
+[1;32m    138[0m         [0mself[0m[0;34m.[0m[0mroot[0m [0;34m=[0m [0mroot[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/bids/layout/validation.py[0m in [0;36mvalidate_root[0;34m(root, validate)[0m
+[1;32m     66[0m [0;34m[0m[0m
+[1;32m     67[0m     [0;32mif[0m [0;32mnot[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mexists[0m[0;34m([0m[0mroot[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 68[0;31m         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"BIDS root does not exist: %s"[0m [0;34m%[0m [0mroot[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     69[0m [0;34m[0m[0m
+[1;32m     70[0m     [0mtarget[0m [0;34m=[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mroot[0m[0;34m,[0m [0;34m'dataset_description.json'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: BIDS root does not exist: /Users/agah/Desktop/RTHDEV/Applications/norah_jones/content/Image
+ValueError: BIDS root does not exist: /Users/agah/Desktop/RTHDEV/Applications/norah_jones/content/Image
+

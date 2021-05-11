@@ -1,0 +1,2107 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let’s say we’d like to bake a Pythonic pizza 🍕, and we need tomatoes 🍅 &#8212; Scientific computing with Python</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Import pybids to query BIDS-formatted data" href="2D-BIDS.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Scientific computing with Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="#">
+   Let’s say we’d like to bake a Pythonic pizza 🍕,  and we need tomatoes 🍅
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pybids
+    </span>
+   </code>
+   to query BIDS-formatted data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#create-a-layout-object">
+   Create a layout object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#import-nibabel">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nibabel
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#fetch-the-nii-image-that-belongs-to-the-chord1-acquisition">
+   Fetch the nii image that belongs to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     chord1
+    </span>
+   </code>
+   acquisition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#numpy-matrix-operations">
+   NumPy matrix operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#the-rolling-phantom">
+   The Rolling Phantom
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#mark-each-sphere-s-center-manually-plot-how-intensity-changes-across-trs">
+   Mark each sphere’s center manually &amp; plot how intensity changes across TRs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2D-BIDS.html#read-metadata-using-bids-layout-json-to-extract-trs">
+   Read metadata using BIDS layout &amp; json to extract TRs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html">
+   NOt RApid Honestly JOyful NEvertheleSs (NORAH JONES) Readout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#norah-jones-raw-data-in-ismrm-rd-format">
+   NORAH JONES Raw Data in ISMRM-RD Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#import-ismrm-rd-modules">
+   Import ISMRM-RD modules 🧲
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#create-a-simple-list-storing-file-names">
+   Create a simple list storing file names 🗂
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#explore-acq-chord1-file">
+   Explore
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     acq-chord1
+    </span>
+   </code>
+   file 🕵️‍♀️
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#initialize-a-3d-numpy-matrix-to-store-multi-channel-raw-data">
+   Initialize a 3D
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     NumPy
+    </span>
+   </code>
+   matrix to store multi-channel raw data 🗃
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#loop-over-acquisitions-to-fill-out-raw">
+   Loop over
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     acquisitions
+    </span>
+   </code>
+   to fill out
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     raw
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/1D-MUSIC.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/agahkarakuzu/sunrise/main?urlpath=tree/content/1D-MUSIC.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/agahkarakuzu/sunrise/blob/main/content/1D-MUSIC.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Let’s say we’d like to bake a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pythonic
+    </span>
+    <span class="pre">
+     pizza
+    </span>
+    <span class="pre">
+     🍕
+    </span>
+   </code>
+   ,  and we need tomatoes
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     🍅
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sunrise-market-everything-you-need-to-throw-an-audiovisual-mri-dinner-party">
+   🛒 Sunrise Market - Everything you need to throw an audiovisual MRI dinner party
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-data">
+     1D Data 🎼
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2D Data 🌅
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3D Data 🎆
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-arrays">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     NumPy
+    </span>
+   </code>
+   arrays
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-numpy-as-np">
+     import
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       numpy
+      </span>
+     </code>
+     as
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       np
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-creation-routines">
+     Array creation routines
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-np-max-any-better-than-max">
+     Is
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       np.max()
+      </span>
+     </code>
+     any better than
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       max()
+      </span>
+     </code>
+     ?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-to-write-some-functions">
+   Time to write some functions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jingle-gradients">
+   Jingle gradients
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-the-contents-of-wavir-folder-select-one-of-them-then-convolve-it-with-a-sound-from-wavmri-wavguitar-or-wavvocal">
+     See the contents of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WavIR
+      </span>
+     </code>
+     folder, select one of them, then convolve it with a sound from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WavMRI
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WavGuitar
+      </span>
+     </code>
+     or
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WavVocal
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-to-hear-the-acoustic-noise-norah-jones-sequence-makes-and-hear-imaginary-feedback-from-norah-jones">
+   Time to hear the acoustic noise NORAH JONES sequence makes and hear (imaginary) feedback from Norah Jones
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-two-problems">
+     There are two problems:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-beauty-of-music-is-in-the-ear-of-the-beholder">
+   The beauty of music is in the ear of the beholder.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-knowledge-mri-noise-vocal-guitar">
+     Python knowledge + MRI noise + Vocal + Guitar:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-exercise-above-asked-you-to-perform-convolution-in-time-domain-to-achieve-this-effect-here-well-do-the-same-thing-by-multiplication-in-the-frequency-domain">
+     The exercise above asked you to perform convolution in time domain to achieve this effect. Here’ well do the same thing by multiplication in the frequency domain.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#challenge-maintain-the-tempo-modulate-the-pitch">
+   Challenge: Maintain the tempo, modulate the pitch
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sound-stretching-using-phase-vocoder-method-laroche-and-dalson-1999">
+     Sound stretching using Phase Vocoder method (Laroche and Dalson 1999)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#daft-punk-is-known-for-their-famous-vocoder-effects">
+   Daft Punk is known for their famous Vocoder effects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-know-the-right-keywords-make-an-informed-google-search-more-often-than-not-you-ll-find-a-python-package-for-what-you-are-looking-for">
+     If you know the right keywords, make an informed Google search. More often than not, you’ll find a Python package for what you are looking for.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#given-that-i-was-not-happy-with-the-pitchshift-implementation-above-i-did-my-google-search-and-found-an-amazing-package-tailored-for-music-dsp">
+       Given that I was not happy with the
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pitchshift
+        </span>
+       </code>
+       implementation above, I did my Google search and found an amazing package tailored for music DSP:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-term-singing-in-the-perfect-fifth-refers-to-two-vocalists-performing-a-duet-7-semitones-apart">
+     The term “singing in the perfect fifth” refers to two vocalists performing a duet 7 semitones apart.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#use-functions-we-wrote-in-this-notebook-librosa-effects-pitch-shift-librosa-effects-time-stretch-and-your-numpy-skills-to-make-your-own-remix-of-mri-flavored-sunrise-so-many-possible-combinations">
+       Use functions we wrote in this notebook,
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         librosa.effects.pitch_shift()
+        </span>
+       </code>
+       ,
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         librosa.effects.time_stretch()
+        </span>
+       </code>
+       and your
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         NumPy
+        </span>
+       </code>
+       skills to make your own remix of MRI-flavored Sunrise! So many possible combinations:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chord-durations-for-verse-1">
+     Chord durations for verse 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pitch-correction-factors-for-3d-spgr">
+     Pitch correction factors for
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       3D
+      </span>
+      <span class="pre">
+       SPGR
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#share-your-art-the-code-to-re-generate-it">
+     Share your art &amp; the code to re-generate it
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#allendowney-thinkdsp">
+   AllenDowney/ThinkDSP
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-to-say-goodbye-to-1d-with-an-impeccable-harmony">
+     Time to say goodbye to 1D with an impeccable harmony
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="" src="assets/summary.png" /></p>
+<div class="alert alert-block alert-success" style="background-color:#1e3059;border-radius:30px 10px">
+<h1 style="color:white;margin-top:1px;"> Step-1 | Shopping: Know your file formats and data standards</h1></div>
+<p>Most high-level programming languages have a <code class="docutils literal notranslate"><span class="pre">native</span></code> way for packing and unpacking their own objects:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Language</p></th>
+<th class="text-align:left head"><p>Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>MATLAB</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">*.mat</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>R</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">*.save</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Python</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">*.pkl</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Julia</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">*.jld</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><code style="background:yellow;color:black">But when we go to community markets for <code>data shopping</code> to cook a nutritious meal, we usually don’t find ingridients available in such formats. </code></p>
+<div class="section" id="let-s-say-we-d-like-to-bake-a-pythonic-pizza-and-we-need-tomatoes">
+<h1>Let’s say we’d like to bake a <code class="docutils literal notranslate"><span class="pre">Pythonic</span> <span class="pre">pizza</span> <span class="pre">🍕</span></code>,  and we need tomatoes <code class="docutils literal notranslate"><span class="pre">🍅</span></code><a class="headerlink" href="#let-s-say-we-d-like-to-bake-a-pythonic-pizza-and-we-need-tomatoes" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="assets/tomato.png" /></p>
+<p><img alt="" src="assets/gordon.png" /></p>
+<div class="alert alert-block alert-success" style="background-color:#1e3059;border-radius:30px 10px">
+<h1 style="color:white;margin-top:1px;">  Step -2 Mise en place avec <code>NumPy</code></h1></div>
+<p><code style="background:yellow;color:black">Load, slice, dice and “put everything in place”.  </code></p>
+<p><img alt="" src="assets/numpy_step2.png" /></p>
+<div class="alert alert-block alert-success" style="background-color:#1e3059;border-radius:30px 10px">
+<h1 style="color:white;margin-top:1px;">  Step -3 Choose your <code>SciPy</code> chefs!</h1></div>
+<p><code style="background:yellow;color:black">Python chefs, at your service.</code></p>
+<p><img alt="" src="assets/scipy_chefs.png" /></p>
+</div>
+<div class="section" id="sunrise-market-everything-you-need-to-throw-an-audiovisual-mri-dinner-party">
+<h1>🛒 Sunrise Market - Everything you need to throw an audiovisual MRI dinner party<a class="headerlink" href="#sunrise-market-everything-you-need-to-throw-an-audiovisual-mri-dinner-party" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="assets/sunrise_market.png" /></p>
+<div class="section" id="d-data">
+<h2>1D Data 🎼<a class="headerlink" href="#d-data" title="Permalink to this headline">¶</a></h2>
+<p>Samples from different MRI sequences (including <code class="docutils literal notranslate"><span class="pre">NORAH</span> <span class="pre">JONES</span></code>) and some guitar melodies to compose magnetic melodies in Python. Files are in <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> format, storing audio sampled at <code class="docutils literal notranslate"><span class="pre">44.1kHz</span></code> sampling frequency (or <code class="docutils literal notranslate"><span class="pre">framerate</span></code>) 💿. Respecting Nyquist sampling theorem, this <code class="docutils literal notranslate"><span class="pre">framerate</span></code> allows us to digitize analog sound at the highest frequency audiable to human ear (<code class="docutils literal notranslate"><span class="pre">20kHz</span></code>).</p>
+<blockquote>
+<div><p>There are so many Python modules that can load a <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> in a single line, such as <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, <code class="docutils literal notranslate"><span class="pre">librosa</span></code>, <code class="docutils literal notranslate"><span class="pre">soundfile</span></code>, <code class="docutils literal notranslate"><span class="pre">scikits</span></code> etc.</p>
+</div></blockquote>
+<p>For demonstration, we will use Python’s standard <code class="docutils literal notranslate"><span class="pre">wave</span></code> library and convert data from <code class="docutils literal notranslate"><span class="pre">byte</span></code> array to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array.</p>
+</div>
+<div class="section" id="id1">
+<h2>2D Data 🌅<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Images acquired using the <code class="docutils literal notranslate"><span class="pre">NORAH</span> <span class="pre">JONES</span></code> sequence at 4 TRs. Each image is <code class="docutils literal notranslate"><span class="pre">100x100</span></code>, organized in <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/">Brain Imaging Data Structure (BIDS)</a>. We will use <code class="docutils literal notranslate"><span class="pre">pyBIDS</span></code> to query and load this data.</p>
+</div>
+<div class="section" id="id2">
+<h2>3D Data 🎆<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>K-space data acquired using the <code class="docutils literal notranslate"><span class="pre">NORAH</span> <span class="pre">JONES</span></code> sequence at 4 TRs. Each file contains <code class="docutils literal notranslate"><span class="pre">100x100x1x16</span></code> data (<code class="docutils literal notranslate"><span class="pre">16</span></code> receive channels), organized in <a class="reference external" href="https://github.com/ismrmrd/ismrmrd">ISMRM Raw Data - ISMRM-RD</a> format. We will use <a class="reference external" href="https://github.com/ismrmrd/ismrmrd-python"><code class="docutils literal notranslate"><span class="pre">ismrmd-python</span></code></a> to load this data.</p>
+<p><img alt="" src="assets/np_basics.png" /></p>
+</div>
+</div>
+<div class="section" id="numpy-arrays">
+<h1><code class="docutils literal notranslate"><span class="pre">NumPy</span></code> arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="assets/np_array.png" /></p>
+<p>Visit the reference <a class="reference external" href="https://jalammar.github.io/visual-numpy/">blog post</a> for more examples.</p>
+<blockquote>
+<div><p>If you have <code class="docutils literal notranslate"><span class="pre">lolviz</span></code> and its dependencies intalled properly, <code class="docutils literal notranslate"><span class="pre">arrayviz</span></code> function will show you a visual representation of the array. If not, you will see the <code class="docutils literal notranslate"><span class="pre">print</span></code> output.</p>
+</div></blockquote>
+<div class="section" id="import-numpy-as-np">
+<h2>import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code><a class="headerlink" href="#import-numpy-as-np" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import NumPy </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A tiny exception block</span>
+<span class="k">try</span><span class="p">:</span> 
+    <span class="kn">from</span> <span class="nn">lolviz</span> <span class="kn">import</span> <span class="n">listviz</span> <span class="k">as</span> <span class="n">lolist</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lolviz is not enabled.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Pictorial representation of arrays   </span>
+<span class="k">def</span> <span class="nf">arrayviz</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span> 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">lolist</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s create an array</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="mi">88</span><span class="p">])</span>
+
+<span class="c1"># Other data types</span>
+<span class="c1"># my_array = np.array([11,22,33,44,55,66,77,88],dtype=np.complex64)</span>
+<span class="c1"># my_array = np.array([11,22,33,44,55,66,77,88],dtype=np.float64)</span>
+
+<span class="c1"># Transpose of a 1D aray has the same shape </span>
+<span class="c1"># my_array = my_array.T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of dimensions: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array shape (row,col): &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array size (number of elements): &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array data type&quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item size in bytes&quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of dimensions:  1
+Array shape (row,col):  (8,)
+Array size (number of elements):  8
+Array data type int64
+Item size in bytes 8
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_12_1.svg" src="_images/1D-MUSIC_12_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Array arithmetic operations</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="mi">88</span><span class="p">])</span>
+<span class="n">your_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span> <span class="c1"># Must be the same length with my_array</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Add: &#39;</span><span class="p">,</span> <span class="n">my_array</span> <span class="o">+</span> <span class="n">your_array</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Subtract: &#39;</span><span class="p">,</span> <span class="n">my_array</span> <span class="o">-</span> <span class="n">your_array</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Multiply: &#39;</span><span class="p">,</span> <span class="n">my_array</span> <span class="o">*</span> <span class="n">your_array</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Divide: &#39;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">/</span><span class="n">your_array</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Floor divide: &#39;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">//</span><span class="n">your_array</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Power: &#39;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">**</span><span class="n">your_array</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Add:  [12 24 36 48 60 72 84 96] 
+Subtract:  [10 20 30 40 50 60 70 80] 
+Multiply:  [ 11  44  99 176 275 396 539 704] 
+Divide:  [11. 11. 11. 11. 11. 11. 11. 11.] 
+Floor divide:  [11 11 11 11 11 11 11 11] 
+Power:  [              11              484            35937          3748096
+        503284375      82653950016   16048523266853 3596345248055296]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="array-creation-routines">
+<h2>Array creation routines<a class="headerlink" href="#array-creation-routines" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">array</span></code> <code class="docutils literal notranslate"><span class="pre">empty</span></code> <code class="docutils literal notranslate"><span class="pre">zeros</span></code> <code class="docutils literal notranslate"><span class="pre">ones</span></code> <code class="docutils literal notranslate"><span class="pre">linspace</span></code> <code class="docutils literal notranslate"><span class="pre">arange</span></code> <code class="docutils literal notranslate"><span class="pre">full</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Start from 11 and return values with increments</span>
+<span class="sd">of 11 until 89 is reached. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.arange: &#39;</span><span class="p">)</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.arange: 
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_15_1.svg" src="_images/1D-MUSIC_15_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span> <span class="c1"># Without .astype, it&#39;ll return float </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Return 8 evenly spaced numbers over 11-88 interval</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.linspace: &#39;</span><span class="p">)</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.linspace: 
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_16_1.svg" src="_images/1D-MUSIC_16_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zrs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Returns of array of zeros with 8 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.zeros: &#39;</span><span class="p">)</span> 
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">zrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.zeros: 
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_17_1.svg" src="_images/1D-MUSIC_17_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span> <span class="c1"># Returns of array of ones with 8 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.ones: &#39;</span><span class="p">)</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.ones: 
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_18_1.svg" src="_images/1D-MUSIC_18_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Returns of array of desired value with 8 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.full: &#39;</span><span class="p">)</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">full</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.full: 
+</pre></div>
+</div>
+<img alt="_images/1D-MUSIC_19_1.svg" src="_images/1D-MUSIC_19_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Returns of array of 8 elements w ithout EXPLICITLY INITIALIZING it with certain values</span>
+<span class="sd">The values we&#39;ll see are arbitrary, i.e. as they exist in the memory address allocated for our array.  </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;np.empty: &#39;</span><span class="p">)</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">epmty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.empty: 
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">b6f47fb429f4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="s1"> print(&#39;np.empty: &#39;)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span><span class="s1"> arrayviz(epmty)</span>
+
+<span class="ne">NameError</span>: name &#39;epmty&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">NumPy</span></code> provides us with:</p>
+<ul class="simple">
+<li><p>A versatile chef’s knife to slice our data as we like (slicing)</p></li>
+<li><p>All the cookware to organize them (data types)</p></li>
+<li><p>Easy way to access what we need, when we need (indexing)</p></li>
+</ul>
+<p><img alt="" src="assets/np_array2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Broadcasting</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">my_array2</span> <span class="o">=</span> <span class="n">my_array</span> <span class="c1"># WARNING! This will create a &quot;shallow&quot; copy (just another pointer to the same array) </span>
+
+<span class="n">my_array2</span> <span class="o">*=</span> <span class="mi">2</span> <span class="c1"># Equivalent of my_array = my_array * 2</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">As you can see, changes we made on my_array2 reflected on my_array as well. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">To create an &quot;independent&quot; clone, we can use deep copy</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span> <span class="c1"># Create a fresh instance  </span>
+
+<span class="n">my_array2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c1"># Now my_array2 is NOT a pointer to my_array</span>
+
+<span class="n">my_array2</span> <span class="o">*=</span> <span class="mi">2</span> <span class="c1"># // is floor devision operator </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original: &#39;</span><span class="p">,</span> <span class="n">my_array</span><span class="p">,</span> <span class="s1">&#39;Deep-copied, modified: &#39;</span><span class="p">,</span><span class="n">my_array2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Cherrypick an element  </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">first</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">last</span> <span class="o">=</span>  <span class="n">my_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First element: &#39;</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="s1">&#39;Last element&#39;</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Slice   </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">portion_from_start</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># Eqv my_array[0:3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First portion: &#39;</span><span class="p">,</span> <span class="n">portion_from_start</span><span class="p">)</span>
+
+<span class="n">portion_from_end</span>   <span class="o">=</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="c1"># Eqv my_array[5:-1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last portion: &#39;</span><span class="p">,</span> <span class="n">portion_from_end</span><span class="p">)</span>
+
+<span class="n">interleave_odd</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Eqv my_array[0::2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interleaved odd: &#39;</span><span class="p">,</span> <span class="n">interleave_odd</span><span class="p">)</span>
+
+<span class="n">interleave_even</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interleaved even: &#39;</span><span class="p">,</span> <span class="n">interleave_even</span><span class="p">)</span>
+
+<span class="n">reverse</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reversed: &#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">In-place filtering</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">my_array</span><span class="p">[((</span><span class="n">my_array</span><span class="o">&lt;</span><span class="mi">50</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">my_array</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Aggregation functions   </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> min: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>       <span class="c1"># Returns the minimum element itself</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> max: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>       <span class="c1"># Returns the maximum element itself</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> argmin: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">argmin</span><span class="p">(),</span> <span class="c1"># Returns the index of the minimum element in the array</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> argmax: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="c1"># Returns the index of the maximum element in the array</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> std: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>       <span class="c1"># Returns the standard deviation of the array </span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> sum: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>       <span class="c1"># Returns the sum of the elements in the array  </span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> prod: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">prod</span><span class="p">(),</span>     <span class="c1"># Returns the product of the elements in the array </span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> mean: &quot;</span><span class="p">,</span> <span class="n">my_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+<span class="p">)</span>
+
+<span class="n">arrayviz</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="is-np-max-any-better-than-max">
+<h2>Is <code class="docutils literal notranslate"><span class="pre">np.max()</span></code> any better than <code class="docutils literal notranslate"><span class="pre">max()</span></code> ?<a class="headerlink" href="#is-np-max-any-better-than-max" title="Permalink to this headline">¶</a></h2>
+<p>To see whether <code class="docutils literal notranslate"><span class="pre">np.max()</span></code> is faster, first we need to create a larger array. Then, we’ll use <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> magic to see which one outperforms the other 🏎</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">One important note about random number generation</span>
+<span class="sd">If you&#39;d like that &quot;randomness&quot; reproduce, you need to</span>
+<span class="sd">seed numpy random number generator</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Numpy aggregation&#39;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">timeit</span> -n 500 mx = test.max()
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Python native&#39;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">timeit</span> -n 500 mx2 = max(test)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success" style="background-color:#1e3059;border-radius:30px 10px">
+<h1 style="color:white;margin-top:1px;"> Get ready for our 1D adventure: Acoustic dissonance </h1></div>
+<center><img src="https://www.meme-arsenal.com/memes/74b204e3ff3833101a7efb420816cf36.jpg"></center>
+<div class="alert alert-block alert-success">
+<h3>  1️⃣ Know your data (at least) <strong style="color:darkgreen"><u>at the level you are dealing with it</u></strong> </h3></div>
+<center><img src="assets/wave_np.png"></center>
+<p><strong>Please 🐻 with me here for a while, because we’ll be dealing with <code class="docutils literal notranslate"><span class="pre">*wav</span></code> files at a somewhat low-level.</strong></p>
+<p>For demonstration, we will write a small function that can read and parse <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> files into a <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> array.</p>
+<p><code style="background:yellow;color:black">This step has no coding. Yet, having some insights about your data beforehand gives you a great headstart for the next step! </code></p>
+<p>So, <a class="reference external" href="https://www.youtube.com/watch?v=zXhLFb34nz4">in a manner of speaking</a>, semantics <strong>will</strong> do 🙃 If Nouvelle Vague is not your cup of tea, maybe this is:</p>
+<div class="alert alert-block alert-warning">
+<b> <a href="https://www.youtube.com/watch?v=AEp08vVYreg">BOLDplay - Fix it 🎶</a></b> 
+<br>
+<strong>    
+<br> When you try your best, but you can't debug
+<br> When <code>p&lt;0.0000000000000000000000000001</code>, and you are not comfortable with it
+<br> When you read the code, but it seems OK 
+<br> Stuck in limbo
+<br>
+<br> When you smell something fishy about your custom reader 
+<br> When you analyze for days, but it goes to waste
+<br> What could be worse?    
+<br>    
+<br> Data standards will guide you home
+<br> And validate your data 
+<br> And you won't need to fix it    
+</strong>        
+</div>
+<hr class="docutils" />
+<p>👉  <strong><code class="docutils literal notranslate"><span class="pre">WavMRI/EPI.wav</span></code> is a stereo (2 channels) recording of the <em>acoustic noise EPI gradient pulses make</em>, sampled at <code class="docutils literal notranslate"><span class="pre">44.1kHz</span></code> for <code class="docutils literal notranslate"><span class="pre">7.42</span> <span class="pre">seconds</span></code>. Saved at 16bit depth. This is how I know (Garageband):</strong></p>
+<center><img src="assets/epi_details.png"></center>
+<div class="math notranslate nohighlight">
+\[ nSamples = frameRate \ (Hz) * duration \ (s) \]</div>
+<div class="math notranslate nohighlight">
+\[ 327547 \approx 44100 * 7.42 \]</div>
+<p><code style="background:yellow;color:black"> Thus, we should expect an array with a length of <code> 655094 = 327547 (samples) X 2 (stereo means 2 channels) </code></code></p>
+<hr class="docutils" />
+<p>The <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">bytes</span> <span class="pre">per</span> <span class="pre">sample</span></code> is <code class="docutils literal notranslate"><span class="pre">16(bits)/8</span> <span class="pre">=</span> <span class="pre">2</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> file contains these information pieces in the <code class="docutils literal notranslate"><span class="pre">header</span></code>, describing the format of the sound information stored in the <code class="docutils literal notranslate"><span class="pre">data</span></code> chunk:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>field name</p></th>
+<th class="text-align:left head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">channels</span></code></p></td>
+<td class="text-align:left"><p>The number of channels in the wave file (mono = 1, stereo = 2)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">sampwidth</span></code></p></td>
+<td class="text-align:left"><p>The number of bytes per sample</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">framerate</span></code></p></td>
+<td class="text-align:left"><p>The number of frames per second (a.k.a sampling frequency)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">nframes</span></code></p></td>
+<td class="text-align:left"><p>The number of frames in the data stream (a.k.a number of samples)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">bytes</span></code></p></td>
+<td class="text-align:left"><p>A <strong>string object</strong> containing the bytes of the data stream</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[ dataSize \ (byte) = nSamples * nChannels * sampWidth \]</div>
+<div class="math notranslate nohighlight">
+\[ 327547*2*2 = 1310188 \ (bytes) \approx 1.3 \ (MB) \]</div>
+<center><img src="assets/epi_size.png"></center>
+<div class="math notranslate nohighlight">
+\[ TFW \ what \ you \ know \ about \ the \ data \ makes \ sense \]</div>
+<div class="alert alert-block alert-success">
+<h3> 2️⃣ Mise en place </h3>
+<br>    
+<b>We did the shopping!</b> 
+<br>    
+    <br>  <code>*.wav</code>  is still a popular data format among music producers. So we are using fresh ingridients to compose our magnetic melodies, way to go! 👩‍🍳
+<br>        
+</div>
+<p><code style="background:yellow;color:black"> Now it is time to combine our <code>*.wav</code> knowledge with our <code>NumPy</code> skills to create an object that we can <b>hear</b>.</code></p>
+<center><img src="assets/wavbox.png"></center>
+<p><code style="background:yellow;color:black"> Before coding, we should relate our knowledge about the data with the docs of the module we’ll use to read it!</code></p>
+<p><br><br></p>
+<details>
+    <summary> 👉 Click this line to expand the API documentation of <code>wave</code> module. See how objects returned by <code>open</code> can access <code>header</code> and <code>data</code> of a <code>*.wav</code> file! </summary>
+    <p><img src="assets/read_wave_api.png"></p>
+</details>
+<br><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wave</span> <span class="kn">import</span> <span class="nb">open</span> <span class="k">as</span> <span class="n">open_wave</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">OPEN THE BOX </span>
+<span class="sd">Open &quot;WavMRI/EPI.wav&quot; file in read mode</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="n">open_wave</span><span class="p">(</span><span class="s2">&quot;WavMRI/EPI.wav&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">READ THE INVOICE</span>
+<span class="sd">Use wave module&#39;s methods to read metadata </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">nchannels</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getnchannels</span><span class="p">()</span>
+<span class="n">nframes</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getnframes</span><span class="p">()</span>
+<span class="n">framerate</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getframerate</span><span class="p">()</span>
+<span class="n">sampwidthbyte</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getsampwidth</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nChannels: &quot;</span><span class="p">,</span> <span class="n">nchannels</span> <span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">nFrames: &quot;</span> <span class="p">,</span> <span class="n">nframes</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">framerate: &quot;</span><span class="p">,</span><span class="n">framerate</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">sampwidth in bytes: &quot;</span><span class="p">,</span><span class="n">sampwidthbyte</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">TAKE OUT THE CONTENTS</span>
+
+<span class="sd">We read machine-byte ordered data into</span>
+<span class="sd">AN ARRAY OF BYTES (STRING ENCODED)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">z_str</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readframes</span><span class="p">(</span><span class="n">nframes</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">CLOSE THE BOX </span>
+<span class="sd">&#39;&#39;&#39;</span> 
+<span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">SEE WHAT IT LOOKS LIKE </span>
+
+<span class="sd">Expected number of frames per channel was 327547 (fSamp * duration)</span>
+<span class="sd">Expected content size was about 1.3MB </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;BOX CONTENT SIZE&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">z_str</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">BOX CONTENT: &#39;</span><span class="p">,</span> <span class="n">z_str</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">MAKE THE CONTENT USEFUL BASED ON WHAT WE LEARNT FROM THE INVOICE!</span>
+<span class="sd">We already know that the data is recorded in 16bit. But we can also </span>
+<span class="sd">infer it from the metadata </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Each entry is &#39;</span><span class="p">,</span> <span class="n">sampwidthbyte</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39; bits. (1 byte = 8 bits)&#39;</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">CONVERT DATA INTO USEFUL INFORMATION</span>
+
+<span class="sd">We can&#39;t use np.array, we need to use </span>
+<span class="sd">frombuffer as we are reading machine-byte </span>
+<span class="sd">ordered data. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">sgnl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">z_str</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>    
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">PLOTLY EXPRESS </span>
+<span class="sd">One line of code for interactive plots!  </span>
+<span class="sd">NOTE that I plot 1 in every 50 samples. This is just to make things faster. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">sgnl</span><span class="p">[::</span><span class="mi">50</span><span class="p">],</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;STEREO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">TAKE OUT ONLY ONE CHANNEL</span>
+<span class="sd">Order: Ch1, Ch2, Ch1, Ch2....</span>
+
+<span class="sd">SLICE </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">sgnl</span> <span class="o">=</span> <span class="n">sgnl</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Again, plotting 1/50 samples</span>
+<span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">sgnl</span><span class="p">[::</span><span class="mi">50</span><span class="p">],</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MONO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">MAKE AUDIO</span>
+<span class="sd">Use IPython&#39;s Audio module</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
+<span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sgnl</span><span class="p">,</span><span class="n">rate</span><span class="o">=</span><span class="n">framerate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-to-write-some-functions">
+<h1>Time to write some functions<a class="headerlink" href="#time-to-write-some-functions" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">read_wave(filename)</span></code></strong>       Reads *.wav file to return:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ys</span></code>          Audio signal (mono)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">framerate</span></code>   Sampling frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ts</span></code>          Time points</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">normalize(ys,amp)</span></code></strong>       Normalizes audio signal amplitude to a user defined range (amp):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ys</span></code>          Normalized audio signal</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">make_audio(ys,amp)</span></code></strong>      Takes <code class="docutils literal notranslate"><span class="pre">ys</span></code> and <code class="docutils literal notranslate"><span class="pre">framerate</span></code> and returns an eenie meenie media player.</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">load_audio(filename,rate_factor=1,duration=0,volume=1)</span></code></strong></p>
+<ul>
+<li><p><strong>Inputs</strong></p>
+<ul>
+<li><p>filename       Wav file</p></li>
+<li><p>rate_factor    Multiplied with sampling freq during <code class="docutils literal notranslate"><span class="pre">make_audio</span> <span class="pre">step</span></code>. (&gt;1 higher &amp; faster, vice versa)</p></li>
+<li><p>duration       Trims audio [0:duration], yeah just that.</p></li>
+<li><p>volume         Normalization range (Use 1 max)</p></li>
+</ul>
+</li>
+<li><p><strong>Output (dict)</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">['signal']</span></code>   Audio signal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['time']</span></code>     Time pts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['fsamp']</span></code>    Sampling frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['duration']</span></code> Shows you the importance of reading docs. Duration of the audio in seconds</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['play']</span></code>     Weeny IPython media player that can play the loaded file</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">fastforward(ys,</span> <span class="pre">factor)</span></code></strong> Speeds up the audio by re-arranging sound samples.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_wave</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Now we have a tiny function that can</span>
+<span class="sd">    load 16bit wav files into a numpy array.</span>
+<span class="sd">    It also returns its time axis and sampling</span>
+<span class="sd">    frequency.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">open_wave</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">nchannels</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getnchannels</span><span class="p">()</span>
+    <span class="n">nframes</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getnframes</span><span class="p">()</span>
+    <span class="n">framerate</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getframerate</span><span class="p">()</span>
+    <span class="n">z_str</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readframes</span><span class="p">(</span><span class="n">nframes</span><span class="p">)</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># We assume that data is always 16bits. Change this to</span>
+    <span class="c1"># int64 and see what happens :) </span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">z_str</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>    
+    <span class="k">if</span> <span class="n">nchannels</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">/</span><span class="n">framerate</span>
+    <span class="k">return</span> <span class="n">ys</span><span class="p">,</span> <span class="n">framerate</span><span class="p">,</span><span class="n">ts</span>
+
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Amplitude range of the *.wav files we load</span>
+<span class="sd">    is random. This function will be useful when</span>
+<span class="sd">    we are combining tracks and would like to hear </span>
+<span class="sd">    some of them less/more in the mix. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># TASK: Use NumPy aggregation functions :) </span>
+    <span class="n">high</span><span class="p">,</span> <span class="n">low</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ys</span><span class="p">)),</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span>
+    <span class="c1"># Broadcasting</span>
+    <span class="k">return</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">ys</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_audio</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">frame_rate</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    To hear *.wav files we load into np.arrays,</span>
+<span class="sd">    we need to create an IPython Audio object. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">ys</span><span class="p">,</span><span class="n">rate</span><span class="o">=</span><span class="n">frame_rate</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">audio</span>
+
+<span class="k">def</span> <span class="nf">load_audio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">rate_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">volume</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    filename:    *.wav file </span>
+<span class="sd">    rate_factor: Changes sampling frequency at the audio</span>
+<span class="sd">                 generation step. This changes the frequency</span>
+<span class="sd">                 but also impacts the play duration.[0,inf)</span>
+<span class="sd">    duration:    Trims audio at a desired time point (s).                    </span>
+<span class="sd">    volume:      Normalizes signal amplitude [0-1] </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">ys</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">read_wave</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">duration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">0</span><span class="p">:</span> 
+        <span class="c1"># Type casting, broadcasting</span>
+        <span class="n">cut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">duration</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+        <span class="c1"># Slicing</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[:</span><span class="n">cut</span><span class="p">]</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[:</span><span class="n">cut</span><span class="p">]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">volume</span><span class="p">)</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">signal</span> <span class="o">=</span> <span class="n">ys</span><span class="p">,</span>
+                <span class="n">time</span> <span class="o">=</span> <span class="n">ts</span><span class="p">,</span>
+                <span class="n">fsamp</span> <span class="o">=</span> <span class="n">fs</span><span class="p">,</span>
+                <span class="n">duration</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="n">fs</span><span class="p">,</span>
+                <span class="n">play</span> <span class="o">=</span> <span class="n">make_audio</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">rate_factor</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">audio</span>
+
+<span class="k">def</span> <span class="nf">fastforward</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Fast forwards the audio (ys) without messing with the</span>
+<span class="sd">    sampling frequency.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ys</span><span class="p">[</span> <span class="n">idx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">A really simple interactive visualization</span>
+<span class="sd">If you&#39;d like to learn more about interactive dataviz</span>
+<span class="sd">https://github.com/agahkarakuzu/datavis_edu</span>
+<span class="sd">&#39;&#39;&#39;</span>
+    
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span> 
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span> <span class="k">as</span> <span class="n">pd</span> 
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span> 
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">USE load_audio</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavMRI/EPI.wav&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][::</span><span class="mi">50</span><span class="p">],</span> <span class="n">signal</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">][::</span><span class="mi">50</span><span class="p">]))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span>
+              <span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EPI acoustic noise, Normalized&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;limegreen&#39;</span><span class="p">),</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># All Plotly charts have click, hover and zoom events which can be accessed </span>
+<span class="c1"># by go.FigureWidget using Jupyter Widgets</span>
+<span class="c1"># Here we create a FigureWidget object (f2) that communicates with our interactive </span>
+<span class="c1"># figure (fig).</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">FigureWidget</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="c1"># @interact decorates the volume_plot function. y=(0.0,1.0) informs ipywidgets to </span>
+<span class="c1"># create a slider, whose value (y) will update f2.data[0].y (y data of the plotly figure object)</span>
+<span class="c1"># whenever the slider is changed.</span>
+<span class="nd">@interact</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">volume_plot</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    CALL normalize each time the slider is moved</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># f2.data[0] means that the first trace that is stored in this figure.</span>
+    <span class="c1"># .y denotes the y axis, to update x, f2.data[0].x etc.</span>
+    <span class="c1"># There are many other attributes we can update, including the figure layout </span>
+    <span class="c1"># axes limits, portion of the data displayed...</span>
+    <span class="c1"># For more examples: https://plotly.com/python/figurewidget/</span>
+    <span class="n">f2</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">][::</span><span class="mi">50</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">f2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning"> <h3> Do you remember Nokia 3310 music composer? See <a href="https://www.youtube.com/watch?v=Iry42Lvcfv4">this masterpiece.</a></h3> <br> </div>
+<p>If you don’t know what Nokia 3310 is, it means that I’m getting old. Anyway, I just wanted to appreciate the “sophistication” in that nostalgic composer. You’ll see that adjusting tone, duration &amp; tempo is not that easy.</p>
+</div>
+<div class="section" id="jingle-gradients">
+<h1>Jingle gradients<a class="headerlink" href="#jingle-gradients" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jingle_gradients</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dur</span><span class="p">):</span>
+    <span class="n">samp_s</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">rate_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="n">dur</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Feel free to change this notes array :)  </span>
+    <span class="n">fake_notes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.06</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span>
+                           <span class="mf">0.94</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.94</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.06</span><span class="p">,</span>
+                           <span class="mf">1.06</span><span class="p">,</span><span class="mf">1.06</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.94</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="mf">0.94</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.94</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.94</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="mf">1.06</span><span class="o">**</span><span class="mi">3</span><span class="p">])</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    I called them fake because we are changing them by speeding up</span>
+<span class="sd">    the audio signal. This does not easily allow us to set durations </span>
+<span class="sd">    (notes change otherwise).</span>
+
+<span class="sd">    1.06 is the factor for one halftone up (sharp)</span>
+<span class="sd">    1.06**2 --&gt; 2 halftones up</span>
+<span class="sd">    0.94 is the factor for one halftone down (flat)</span>
+<span class="sd">    0.94**3 --&gt; 3 halftones down etc.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">fastforward</span><span class="p">(</span><span class="n">samp_s</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">fake_notes</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">fastforward</span><span class="p">(</span><span class="n">samp_s</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">note</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Change the MRI sample to play Jingle Bells </span>
+<span class="sd">with a different sequence :)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+    
+<span class="c1">#jingle = jingle_gradients(&#39;WavMRI/CINE_cartesian_SSFP.wav&#39;,0.2)</span>
+<span class="n">jingle</span> <span class="o">=</span> <span class="n">jingle_gradients</span><span class="p">(</span><span class="s1">&#39;WavMRI/EPI.wav&#39;</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1">#jingle = jingle_gradients(&#39;WavMRI/BEAT.wav&#39;,0.2)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">If you add up different sequence noise, it won&#39;t be harmonic. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">jingle</span><span class="p">,</span><span class="mi">44100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Amplitude modulation</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f_c</span><span class="p">,</span> <span class="n">f_m</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    t    = time</span>
+<span class="sd">    f_c  = carrier frequency</span>
+<span class="sd">    f_m  = modulation frequency</span>
+<span class="sd">    beta = modulation index</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f_c</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">f_m</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">to_integer</span><span class="p">(</span><span class="n">signal</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Take samples in [-1, 1] and scale to 16-bit integers,</span>
+<span class="sd">    values between -2^15 and 2^15 - 1.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">signal</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">15</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="c1"># three seconds of audio</span>
+
+<span class="n">siren</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">siren</span><span class="p">,</span><span class="mi">44100</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning"> <h3> 🙌 Exercise: Wav signal & pure tones </h3> </div>
+<p>Generate a pure tone using <code class="docutils literal notranslate"><span class="pre">np.sin</span></code> that has the same duration with a sound sample of your choice, then multiply/add them to see what it gives. You need to unlock the code cell first by achieveing this simple task:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tduration</span><span class="o">=</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">TASK: Assign tduration with the duration of the signal (in seconds, but be accurate!)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="alert alert-block alert-warning"> <h3> Test your musical ear 👂</h3><br> Change the <code>sin_freq</code> with small increments, and see after how many Hz you'll distinguish the sine tone from the SPGR noise. 164Hz is the next note (E3). If you can tell them before that, you have an ear for eastern music, if you cannot tell it after 164Hz, you may be tone deaf 👀</div>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">sin_freq</span></code> to 155 (D#3)</p></li>
+<li><p>Load <code class="docutils literal notranslate"><span class="pre">3DSPGR_TR12ms.wav</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">my_sound['signal']</span> <span class="pre">+</span> <span class="pre">sin_wave</span></code></p></li>
+<li><p>Play and see if they are attuned ;)</p></li>
+</ul>
+<p><strong>Hint: You can use this approach to find out the dominant sound frequency of a pulse sequence of your choice.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_sound</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavMRI/3DSPGR_TR12ms.wav&#39;</span><span class="p">)</span> <span class="c1"># Select one from WavMRI folder</span>
+
+<span class="n">tduration</span><span class="o">=</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">TASK: Assign tduration with the duration of the signal (in seconds, but be accurate!)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">sin_freq</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Choose a lower (e.g. 2) or a higher (e.g. 1000) sin_freq and see how they affect the output.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">sf</span> <span class="o">=</span> <span class="n">my_sound</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">]</span> 
+
+<span class="n">sin_wave</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sf</span><span class="o">*</span><span class="n">tduration</span><span class="p">)</span><span class="o">*</span><span class="n">sin_freq</span><span class="o">/</span><span class="n">sf</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Playground 1</span>
+<span class="sd">Tip: You can try other trigonometric functions in numpy as well :) </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">my_sound</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">sin_wave</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Playground 2</span>
+<span class="sd">Tip: Add, subtract &amp; multiply your sound with this sin_wave</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">make_audio</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="n">my_sound</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">])</span> <span class="c1"># Hear it!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning"> <h3> 🙌 Exercise: Convolution </h3> <br> Ever heard about reverbation? It is a highly popular sound effect for instruments and vocals.</div>
+<blockquote>
+<div><p><a class="reference external" href="https://blog.landr.com/what-is-reverb/">Reverb</a> lets you transport a listener to a concert hall, a cave, a cathedral, or an intimate performance space.</p>
+</div></blockquote>
+<p>Sounds exactly like what we need in 2021. We have some <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">domain</span> <span class="pre">impulse</span> <span class="pre">responses</span> <span class="pre">(IR)</span></code> that can even take you to outer space (<code class="docutils literal notranslate"><span class="pre">WavIR/OnAStar.wav</span></code>) 🌟 Wait… What’s a time-domain IR? Gunshot, clap, balloon pop… You can imagine how these sounds “characterize” their environment. Gunshot in a studio vs gunshot in a large hallway. When you convolve your audio with the former one, you’ll get a “dry” sound. Convolution with the latter one yields a “wet” sound.</p>
+<div class="section" id="see-the-contents-of-wavir-folder-select-one-of-them-then-convolve-it-with-a-sound-from-wavmri-wavguitar-or-wavvocal">
+<h2>See the contents of  <code class="docutils literal notranslate"><span class="pre">WavIR</span></code> folder, select one of them, then convolve it with a sound from <code class="docutils literal notranslate"><span class="pre">WavMRI</span></code>, <code class="docutils literal notranslate"><span class="pre">WavGuitar</span></code> or <code class="docutils literal notranslate"><span class="pre">WavVocal</span></code><a class="headerlink" href="#see-the-contents-of-wavir-folder-select-one-of-them-then-convolve-it-with-a-sound-from-wavmri-wavguitar-or-wavvocal" title="Permalink to this headline">¶</a></h2>
+<p>You will use <code class="docutils literal notranslate"><span class="pre">np.convolve</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Signature: np.convolve(a, v, mode=&#39;full&#39;)
+Docstring:
+Returns the discrete, linear convolution of two one-dimensional sequences.
+
+The convolution operator is often seen in signal processing, where it
+models the effect of a linear time-invariant system on a signal [1]_.  In
+probability theory, the sum of two independent random variables is
+distributed according to the convolution of their individual
+distributions.
+
+If `v` is longer than `a`, the arrays are swapped before computation.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavVocal/SUNRISE_BENGU.wav&#39;</span><span class="p">)</span>
+<span class="c1"># v = load_audio(&#39;WavIR/your_choice_of_IR.wav&#39;)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Perform convolution here, then play it! </span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+    <h2> Let's hear NOt RApid Honestly JOyful NEvertheleSs (NORAH JONES) sequence</h2>       
+</div>
+<p><code style="background:yellow;color:black">But first, we will combine the guitar melody (<code>🎸 WavGuitar/SUNRISE.wav</code>) with vocals 🎙 artfully recorded by <a href="https://soundcloud.com/beng-a">Bengu Aktas</a> exclusively for this course. Thank you Bengu!   </code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vocal</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavVocal/SUNRISE_BENGU.wav&#39;</span><span class="p">)</span>
+<span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guitar</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavGuitar/SUNRISE_GUITAR.wav&#39;</span><span class="p">)</span>
+<span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Remember array arithmetics, arrays should be of equal size</span>
+<span class="sd">We can use np.padding on vocal </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">pad_size</span> <span class="o">=</span> <span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="c1"># Find out how much longer is the guitar track </span>
+<span class="n">vocal_padded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_size</span><span class="p">),</span> <span class="s1">&#39;constant&#39;</span><span class="p">)</span> <span class="c1"># Add that many zeros at the end of the vocal track</span>
+
+<span class="n">make_audio</span><span class="p">(</span><span class="n">vocal_padded</span> <span class="o">+</span> <span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span><span class="mi">44100</span><span class="p">)</span> <span class="c1"># Make a new audio by adding them</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-to-hear-the-acoustic-noise-norah-jones-sequence-makes-and-hear-imaginary-feedback-from-norah-jones">
+<h1>Time to hear the acoustic noise NORAH JONES sequence makes and hear (imaginary) feedback from Norah Jones<a class="headerlink" href="#time-to-hear-the-acoustic-noise-norah-jones-sequence-makes-and-hear-imaginary-feedback-from-norah-jones" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://www.youtube.com/embed/EOBiyV55MNg&#39;</span><span class="p">,</span><span class="mi">560</span><span class="p">,</span><span class="mi">315</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="assets/dissonance.png" /></p>
+<div class="section" id="there-are-two-problems">
+<h2>There are two problems:<a class="headerlink" href="#there-are-two-problems" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Duration</strong> The original duration of the first verse (Sunrise, sunrise, looks like morning in your eyes…) is about 13 seconds (<code class="docutils literal notranslate"><span class="pre">WavGuitar/SUNRISE.wav</span></code>), but NORAH JONES sequence played it for 4 seconds only. Not that slow afterall :)</p></li>
+<li><p><strong>Frequency</strong> 4 different tones we heard were supposed to match the keynotes of the original chords, but not all of them did.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="the-beauty-of-music-is-in-the-ear-of-the-beholder">
+<h1>The beauty of music is in the ear of the beholder.<a class="headerlink" href="#the-beauty-of-music-is-in-the-ear-of-the-beholder" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-knowledge-mri-noise-vocal-guitar">
+<h2>Python knowledge + MRI noise + Vocal + Guitar:<a class="headerlink" href="#python-knowledge-mri-noise-vocal-guitar" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;REMIX/SUNRISE_SPGR_VERSE1.wav&#39;</span><span class="p">)</span>
+<span class="n">target</span><span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<h3> 3️⃣ From the time to the frequency domain: Bring in the <code>SciPy</code> chefs, we need them now! </h3></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fftshift</span><span class="p">,</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifftshift</span><span class="p">,</span> <span class="n">ifft</span>
+<span class="kn">import</span> <span class="nn">scipy.fftpack</span> <span class="k">as</span> <span class="nn">fftpack</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">FREQUENCY SPECTRUM</span>
+<span class="sd">fftshift(fft(mri_orig[&#39;signal&#39;])) --&gt; 1D FFT </span>
+<span class="sd">fftshift(fftpack.fftfreq(mri_orig[&#39;signal&#39;].size)) --&gt; Sample frequencies</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">mri_orig</span>  <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavMRI/EPI.wav&#39;</span><span class="p">)</span> 
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Try other sequences!</span>
+<span class="sd">BEAT.wav</span>
+<span class="sd">AFI.wav </span>
+<span class="sd">LOC_siemens.wav</span>
+<span class="sd">LOC_SSFP.wav</span>
+<span class="sd">RT_Shim.wav </span>
+<span class="sd">...</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 1D FFT</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]))</span>
+
+<span class="c1"># Sample frequencies </span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fftpack</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">))</span> <span class="o">*</span> <span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">Frequency</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">,</span>
+                    <span class="n">Magnitude</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                    <span class="n">Phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+                    <span class="p">))</span>
+
+<span class="c1"># Real component (yellow)</span>
+<span class="c1"># You can change y=&#39;Phase to show phase instead&#39;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">,</span>
+              <span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Frequency Spectrum (0-20kHz as fs is 44.1kHz), please zoom in.&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">),</span><span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">POWER SPECTRAL DENSITY </span>
+
+<span class="sd">Welch’s method computes an estimate of the power spectral density by dividing </span>
+<span class="sd">the data into overlapping segments, computing a modified periodogram </span>
+<span class="sd">for each segment and averaging the periodograms.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">psd</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">welch</span><span class="p">(</span><span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">],</span> <span class="s1">&#39;flattop&#39;</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;spectrum&#39;</span><span class="p">,</span><span class="n">return_onesided</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">Frequency</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span>
+                    <span class="n">PSD</span> <span class="o">=</span> <span class="n">psd</span>
+                    <span class="p">))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;PSD&#39;</span><span class="p">,</span>
+              <span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Power Spectral Density (0-20kHz as fs is 44.1kHz), please zoom in.&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">),</span><span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">SPECTOGRAM</span>
+<span class="sd">Spectrograms can be used as a way of visualizing the change of </span>
+<span class="sd">a nonstationary signal’s frequency content over time.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Sxx</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">mri_orig</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">],</span><span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;spectrum&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">z</span><span class="o">=</span><span class="n">Sxx</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+        <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Spectogram&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+    <h2> Go-to effect of all musicians: Reverb </h2>       
+</div>
+</div>
+<div class="section" id="the-exercise-above-asked-you-to-perform-convolution-in-time-domain-to-achieve-this-effect-here-well-do-the-same-thing-by-multiplication-in-the-frequency-domain">
+<h2>The exercise above asked you to perform convolution in time domain to achieve this effect. Here’ well do the same thing by multiplication in the frequency domain.<a class="headerlink" href="#the-exercise-above-asked-you-to-perform-convolution-in-time-domain-to-achieve-this-effect-here-well-do-the-same-thing-by-multiplication-in-the-frequency-domain" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guitar</span>  <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavGuitar/SUNRISE_GUITAR.wav&#39;</span><span class="p">)</span>
+
+<span class="n">star</span>  <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavIR/OnAStar.wav&#39;</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Try other reverb IRs: </span>
+<span class="sd">LargeLongEchoHall.wav</span>
+<span class="sd">Rays.wav</span>
+<span class="sd">VocalDuo.wav</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">zero_pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Inputs must be of the same size.  </span>
+<span class="sd">    Exercise: You can also use np.pad :) </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+
+<span class="c1"># Zero padding</span>
+<span class="n">G</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">star</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+<span class="n">g_zp</span> <span class="o">=</span> <span class="n">zero_pad</span><span class="p">(</span><span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">S</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">s_zp</span> <span class="o">=</span> <span class="n">zero_pad</span><span class="p">(</span><span class="n">star</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">G</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># FFT for guitar </span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">g_zp</span><span class="p">)</span>
+<span class="c1"># Inverse (real) FFT guitar after multiplying it with the FFT of the reverb IR </span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">ifft</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">fft</span><span class="p">(</span><span class="n">s_zp</span><span class="p">))</span><span class="o">.</span><span class="n">real</span>
+<span class="c1"># Depending on the IR, output can be longer, it&#39;ll become clearer when you hear it</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="o">+</span> <span class="n">g_zp</span>
+
+<span class="c1"># Let&#39;s hear! </span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">guitar</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="challenge-maintain-the-tempo-modulate-the-pitch">
+<h1>Challenge: Maintain the tempo, modulate the pitch<a class="headerlink" href="#challenge-maintain-the-tempo-modulate-the-pitch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sound-stretching-using-phase-vocoder-method-laroche-and-dalson-1999">
+<h2>Sound stretching using <a class="reference external" href="http://zulko.github.io/blog/2014/03/29/soundstretching-and-pitch-shifting-in-python/">Phase Vocoder method</a> (Laroche and Dalson 1999)<a class="headerlink" href="#sound-stretching-using-phase-vocoder-method-laroche-and-dalson-1999" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>You first break the sound into overlapping bits, and you rearrange these bits so that they will overlap even more (if you want to shorten the sound) or less (if you want to stretch the sound), like in this figure:</p>
+</div></blockquote>
+<center><img src="http://zulko.github.io/images/soundstretching/stretchsound.png"></center>
+<p>For a more technical reading, see this <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.332.1708&amp;rep=rep1&amp;type=pdf">article.</a></p>
+<ul class="simple">
+<li><p>Divide signal into multiple windows</p>
+<ul>
+<li><p>We’ll take <code class="docutils literal notranslate"><span class="pre">window_size</span></code> as an input, it must be a power of 2 (FFT)</p></li>
+</ul>
+</li>
+<li><p>Set an overlapping factor (h) a.k.a. “hop size”</p>
+<ul>
+<li><p>Method requires us to create overlapping slices</p></li>
+</ul>
+</li>
+<li><p>Select a windowing function</p>
+<ul>
+<li><p>This [article](<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.332.1708&amp;rep=rep1&amp;type=pdf">article</a> suggests Hanning, <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> got us covered yet again.</p></li>
+</ul>
+</li>
+<li><p>Let user decide stretching factor (f).</p>
+<ul>
+<li><p>For example, f=0.5 twofold lengthens the signal</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="daft-punk-is-known-for-their-famous-vocoder-effects">
+<h1>Daft Punk is known for their famous Vocoder effects<a class="headerlink" href="#daft-punk-is-known-for-their-famous-vocoder-effects" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://www.youtube.com/embed/x84m3YyO2oU&#39;</span><span class="p">,</span><span class="mi">560</span><span class="p">,</span><span class="mi">315</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stretch</span><span class="p">(</span><span class="n">sound_array</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Stretches the sound by a factor `f` &quot;&quot;&quot;</span>
+    <span class="n">phase</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">window_size</span><span class="p">)</span>
+    <span class="n">hanning_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hanning</span><span class="p">(</span><span class="n">window_size</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">sound_array</span><span class="o">.</span><span class="n">size</span><span class="o">//</span><span class="n">f</span><span class="p">)</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sound_array</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="p">(</span><span class="n">window_size</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">f</span><span class="p">)):</span> <span class="c1"># You already know what np.arange does! </span>
+        
+        <span class="c1"># Create overlapping arrays </span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="n">sound_array</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span> <span class="c1"># First block </span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="n">sound_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">h</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="n">h</span><span class="p">]</span> <span class="c1"># Shifted block </span>
+        
+        <span class="c1"># Multiply with Hanning window, then fft </span>
+        <span class="n">s1</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">hanning_window</span> <span class="o">*</span> <span class="n">a1</span><span class="p">)</span> <span class="c1"># First block in freq domain</span>
+        <span class="n">s2</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">hanning_window</span> <span class="o">*</span> <span class="n">a2</span><span class="p">)</span> <span class="c1"># Shifted block in freq domain </span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        ----------------------------------------</span>
+<span class="sd">        This part is really MRI sciency!!!!!  </span>
+<span class="sd">        ---------------------------------------</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="p">(</span><span class="n">phase</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">s2</span><span class="o">/</span><span class="n">s1</span><span class="p">))</span> <span class="o">%</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+        <span class="sd">&#39;&#39;&#39;                                            </span>
+<span class="sd">        (2pi X phase_difference) between overlapping blocks</span>
+<span class="sd">        Note that phase differences are tracked across windows (SUM), we are in a for loop. This was </span>
+<span class="sd">        supposed to be done more elegantly. Our pitch corrected signal will sound crispy. </span>
+<span class="sd">        &#39;&#39;&#39;</span> 
+        <span class="n">a2_rephased</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">phase</span><span class="p">)))</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        If we multiply the shifted frequency block by e^(2pi * i * phase_offset)...</span>
+<span class="sd">        we correct for the phase difference, sounds familiar? :))  </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># /Stretch/Accumulate/arrange outputs</span>
+        <span class="n">i2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">i2</span> <span class="p">:</span> <span class="n">i2</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">]</span> <span class="o">+=</span> <span class="n">hanning_window</span><span class="o">*</span><span class="n">a2_rephased</span> 
+        
+    <span class="n">result</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">16</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span> <span class="o">*</span> <span class="n">result</span><span class="o">/</span><span class="n">result</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># normalize (16bit)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pitchshift</span><span class="p">(</span><span class="n">snd_array</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">13</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">11</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot; Changes the pitch of a sound by ``n`` semitones. &quot;&quot;&quot;</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="mf">12.0</span><span class="p">)</span>
+    <span class="n">stretched</span> <span class="o">=</span> <span class="n">stretch</span><span class="p">(</span><span class="n">snd_array</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">factor</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fastforward</span><span class="p">(</span><span class="n">stretched</span><span class="p">[</span><span class="n">window_size</span><span class="p">:],</span> <span class="n">factor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">WARNING </span>
+<span class="sd">This implementation is not robust &amp; really functional at all. It probably </span>
+<span class="sd">won&#39;t even work for other audio files. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">pitch_me</span>  <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavMRI/EPI.wav&#39;</span><span class="p">)</span> 
+<span class="n">pitched</span> <span class="o">=</span> <span class="n">pitchshift</span><span class="p">(</span><span class="n">pitch_me</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">pitched</span><span class="p">,</span><span class="mi">44100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<h3> A really important lesson about scientific computing in Python </h3></div>
+<p>Python is a full spectrum programming language. As of today, there are 235,000 packages served by <code class="docutils literal notranslate"><span class="pre">PyPI</span></code> (<code class="docutils literal notranslate"><span class="pre">pip</span></code>) alone!</p>
+<div class="section" id="if-you-know-the-right-keywords-make-an-informed-google-search-more-often-than-not-you-ll-find-a-python-package-for-what-you-are-looking-for">
+<h2>If you know the right keywords, make an informed Google search. More often than not, you’ll find a Python package for what you are looking for.<a class="headerlink" href="#if-you-know-the-right-keywords-make-an-informed-google-search-more-often-than-not-you-ll-find-a-python-package-for-what-you-are-looking-for" title="Permalink to this headline">¶</a></h2>
+<center><img src="http://cecilialiao.com/wp-content/uploads/2015/06/mlwgc.jpg"></center>
+<div class="section" id="given-that-i-was-not-happy-with-the-pitchshift-implementation-above-i-did-my-google-search-and-found-an-amazing-package-tailored-for-music-dsp">
+<h3>Given that I was not happy with the <code class="docutils literal notranslate"><span class="pre">pitchshift</span></code> implementation above, I did my Google search and found an amazing package tailored for music DSP:<a class="headerlink" href="#given-that-i-was-not-happy-with-the-pitchshift-implementation-above-i-did-my-google-search-and-found-an-amazing-package-tailored-for-music-dsp" title="Permalink to this headline">¶</a></h3>
+<center><img src="https://librosa.org/doc/latest/_static/librosa_logo_text.svg"></center>
+<p><br><center> A chef specialized in the audio cuisine!  </center></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">librosa</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">CHANGE THE PITCH WITHOUT AFFECTING THE ORIGINAL DURATION </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">vocal</span>  <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;WavVocal/SUNRISE_BENGU.wav&#39;</span><span class="p">)</span>
+<span class="n">vocal_octave</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">pitch_shift</span><span class="p">(</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">],</span> <span class="n">n_steps</span><span class="o">=-</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">vocal_octave</span><span class="p">,</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">CHANGE THE DURATION WITHOUT AFFECTING THE ORIGINAL PITCH</span>
+<span class="sd">No chipmunk transformation :) </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">vocal_slow</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">time_stretch</span><span class="p">(</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">make_audio</span><span class="p">(</span><span class="n">vocal_slow</span><span class="p">,</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-danger">
+<h3> Singing Sunrise in the perfect fifth: A Python-powered COVID-safe duet </h3></div>
+<p><img alt="" src="assets/harmony.png" /></p>
+<p>Do not miss out this <a class="reference external" href="https://www.youtube.com/watch?v=EcKgJhFdtEY">musical explanation of spherical harmonics</a>.</p>
+<p><img alt="" src="assets/circle_of_fifths.png" /></p>
+</div>
+</div>
+<div class="section" id="the-term-singing-in-the-perfect-fifth-refers-to-two-vocalists-performing-a-duet-7-semitones-apart">
+<h2>The term “singing in the perfect fifth” refers to two vocalists performing a duet 7 semitones apart.<a class="headerlink" href="#the-term-singing-in-the-perfect-fifth-refers-to-two-vocalists-performing-a-duet-7-semitones-apart" title="Permalink to this headline">¶</a></h2>
+<p>If I were singing along with Bengu, my key would have been low-pitched. Yet, I would not be able to sing from one octave lower (12 semitones), I am not that good of a singer.</p>
+<p>Although it violates the rules of perfect <code class="docutils literal notranslate"><span class="pre">resonance</span></code> as we know, there’s a <code class="docutils literal notranslate"><span class="pre">second</span> <span class="pre">perfect</span> <span class="pre">harmonic</span> <span class="pre">tone</span></code> (any many other harmonics) in music!</p>
+<p>When we down-pitch Bengu’s voice by 7 semitones, we transpose the key from <code class="docutils literal notranslate"><span class="pre">A#</span></code> to <code class="docutils literal notranslate"><span class="pre">D#</span></code> (<code class="docutils literal notranslate"><span class="pre">IV</span></code> in the figure above). Conversely, when we go 7 halftones up, we transpose the key from <code class="docutils literal notranslate"><span class="pre">A#</span></code> to <code class="docutils literal notranslate"><span class="pre">E#</span></code> (<code class="docutils literal notranslate"><span class="pre">V</span></code> in the figure above). Both <code class="docutils literal notranslate"><span class="pre">D#</span></code> and <code class="docutils literal notranslate"><span class="pre">E#</span></code> are in the <code class="docutils literal notranslate"><span class="pre">major</span></code> scale, hence the circle of fifths! Surprise, surprise, both notes are in the chord progression of the original song as well :)</p>
+<p>Let’s pitch Bengu’s voice by 7 halftones using <code class="docutils literal notranslate"><span class="pre">librosa</span></code> and pretend that’s me. We already know how to overlay multiple tracks into one to turn it into a duet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vocal_agah</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">pitch_shift</span><span class="p">(</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">],</span> <span class="n">n_steps</span><span class="o">=-</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Well, we&#39;d need a Lyric Soprano for this</span>
+<span class="c1"># vocal_brightman = librosa.effects.pitch_shift(vocal[&#39;signal&#39;], vocal[&#39;fsamp&#39;], n_steps=12)</span>
+
+<span class="n">make_audio</span><span class="p">(</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">vocal_agah</span><span class="p">,</span><span class="n">vocal</span><span class="p">[</span><span class="s1">&#39;fsamp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">And finally, when we add all the layers together...</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">duet</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="s1">&#39;REMIX/SUNRISE_VERSE1_DUET.wav&#39;</span><span class="p">)</span>
+<span class="n">duet</span><span class="p">[</span><span class="s1">&#39;play&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning"> <h2> 💁‍♀️🎙 + 🎸 + 🧲🔊 + 💻  </h2><h3>THE Exercise</h3> </div>
+<div class="section" id="use-functions-we-wrote-in-this-notebook-librosa-effects-pitch-shift-librosa-effects-time-stretch-and-your-numpy-skills-to-make-your-own-remix-of-mri-flavored-sunrise-so-many-possible-combinations">
+<h3>Use functions we wrote in this notebook, <code class="docutils literal notranslate"><span class="pre">librosa.effects.pitch_shift()</span></code>, <code class="docutils literal notranslate"><span class="pre">librosa.effects.time_stretch()</span></code> and your <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> skills to make your own remix of MRI-flavored Sunrise! So many possible combinations:<a class="headerlink" href="#use-functions-we-wrote-in-this-notebook-librosa-effects-pitch-shift-librosa-effects-time-stretch-and-your-numpy-skills-to-make-your-own-remix-of-mri-flavored-sunrise-so-many-possible-combinations" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Folder</p></th>
+<th class="text-align:left head"><p>Number of files</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>WavIR</p></td>
+<td class="text-align:left"><p>38</p></td>
+<td class="text-align:left"><p>Time-domain impulse responses for different reverb effects.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>WavMRI</p></td>
+<td class="text-align:left"><p>25</p></td>
+<td class="text-align:left"><p>Acoustic noise of various pulse sequences and some other sounds from the MRI room.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>WavGuitar</p></td>
+<td class="text-align:left"><p>2</p></td>
+<td class="text-align:left"><p>Guitar layer of Sunrise. (Verse1 and the whole song)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>WavVocal</p></td>
+<td class="text-align:left"><p>2</p></td>
+<td class="text-align:left"><p>Vocals &amp; back-vocals recorded by Bengu Aktas (Verse 1 and the whole song).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="chord-durations-for-verse-1">
+<h2>Chord durations for verse 1<a class="headerlink" href="#chord-durations-for-verse-1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="assets/sunrise_chords.png" /></p>
+<p>Time intervals are given with reference to <code class="docutils literal notranslate"><span class="pre">WavGuitar/SUNRISE_GUITAR.wav</span></code>.</p>
+<p><code style="background:red;color:white"> <b>You’ll need to use the following information to remix using 3D-SPGR. If you’d like to use other sequences, you’ll need to come up with your own pitch correction steps! </b></code></p>
+<ol class="simple">
+<li><p>Using a single sequence file (e.g., <code class="docutils literal notranslate"><span class="pre">AFI.wav</span></code> for all chords), just find out how many steps you need to pitch up/down with reference to <code class="docutils literal notranslate"><span class="pre">A#2</span> <span class="pre">(116Hz)</span></code> (hint: see <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">your</span> <span class="pre">musical</span> <span class="pre">ear</span></code> exercise above). You can transpose the remainign chords from there as you ‘instrument’ is tuned :) You can find respective frequencies in the table below.</p></li>
+<li><p>If you’d like to use different sequence sounds for different chords (e.g. <code class="docutils literal notranslate"><span class="pre">SHIM.wav</span></code> for <code class="docutils literal notranslate"><span class="pre">A#2</span></code> and <code class="docutils literal notranslate"><span class="pre">LOC_SSFP.wav</span></code> for D#3), then you’ll need to repeat (1) for each wav file.</p></li>
+</ol>
+</div>
+<div class="section" id="pitch-correction-factors-for-3d-spgr">
+<h2>Pitch correction factors for <code class="docutils literal notranslate"><span class="pre">3D</span> <span class="pre">SPGR</span></code><a class="headerlink" href="#pitch-correction-factors-for-3d-spgr" title="Permalink to this headline">¶</a></h2>
+<p><code style="background:yellow;color:black"> <b>The following table and color-annotated lyrics of the first verse contain neccesary information to harmoniously remix Sunrise guitar &amp; vocal tracks with the acoustic noise of NORAH JONES sequence made at each TR:</b></code></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Tonic Note</p></th>
+<th class="text-align:left head"><p>Frequency</p></th>
+<th class="text-align:left head"><p>Attuned?</p></th>
+<th class="text-align:left head"><p>Pitch Shift</p></th>
+<th class="text-align:left head"><p>Color Code</p></th>
+<th class="text-align:left head"><p>Wav file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>A#2</p></td>
+<td class="text-align:left"><p>116 Hz</p></td>
+<td class="text-align:left"><p>😢</p></td>
+<td class="text-align:left"><p>⬆️  3 halftones*</p></td>
+<td class="text-align:left"><p>Red</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">3DSPGR_TR13ms.wav</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>D#3</p></td>
+<td class="text-align:left"><p>155 Hz</p></td>
+<td class="text-align:left"><p>🎉</p></td>
+<td class="text-align:left"><p>-</p></td>
+<td class="text-align:left"><p>Blue</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">3DSPGR_TR12ms.wav</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>C3</p></td>
+<td class="text-align:left"><p>130 Hz</p></td>
+<td class="text-align:left"><p>🎉</p></td>
+<td class="text-align:left"><p>-</p></td>
+<td class="text-align:left"><p>Purple</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">3DSPGR_TR10ms.wav</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>G#2</p></td>
+<td class="text-align:left"><p>103 Hz</p></td>
+<td class="text-align:left"><p>😢</p></td>
+<td class="text-align:left"><p>⬇️  1 halftone</p></td>
+<td class="text-align:left"><p>Green</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">3DSPGR_TR20ms.wav</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="share-your-art-the-code-to-re-generate-it">
+<h2>Share your art &amp; the code to re-generate it<a class="headerlink" href="#share-your-art-the-code-to-re-generate-it" title="Permalink to this headline">¶</a></h2>
+<p>Once you are happy with your masterpiece, share it with us!</p>
+<ol class="simple">
+<li><p>Clone this repository</p></li>
+<li><p>Create a new directory under the <code class="docutils literal notranslate"><span class="pre">REMIX</span></code> folder. For example <code class="docutils literal notranslate"><span class="pre">REMIX/your_name</span></code>.</p></li>
+<li><p>Put your <code class="docutils literal notranslate"><span class="pre">*.wav</span></code> output and the notebook that generates it in the folder.</p></li>
+<li><p>Commit your changes</p></li>
+<li><p>Send a Pull Request to <code class="docutils literal notranslate"><span class="pre">agahkarakuzu/sunrise</span></code></p></li>
+</ol>
+<p>Who knows, maybe we can play them at the Highlights Party next year in London!</p>
+<div class="alert alert-block alert-success" style="background-color:#1e3059;border-radius:30px 10px">
+<h1 style="color:white;margin-top:1px;">  Other fun resources to learn Python basics for scientific computing</h1></div>
+<center><h3> <a href="https://earsketch.gatech.edu/landing/#/learn">EarSketch</a> is a must see!</h3></center>
+<p><img alt="" src="assets/ear_sketch.png" /></p>
+<center><h3 style="color:purple"> Create an account, use any wav file you like from this repository and improve your Python skills as you make music with MRI sounds!</h3></center></div>
+</div>
+<div class="section" id="allendowney-thinkdsp">
+<h1><a class="reference external" href="https://github.com/AllenDowney/ThinkDSP">AllenDowney/ThinkDSP</a><a class="headerlink" href="#allendowney-thinkdsp" title="Permalink to this headline">¶</a></h1>
+<p>This GitHub repository is full of notebooks dedicated for digital signal processing in Python. Allen Downey’s <a class="reference external" href="https://www.youtube.com/watch?v=0ALKGR0I5MA">SciPy 2015 talk</a> was a great source of inspiration for me to come up with this course. Thank you Allen!</p>
+<div class="section" id="time-to-say-goodbye-to-1d-with-an-impeccable-harmony">
+<h2>Time to say goodbye to 1D with an impeccable harmony<a class="headerlink" href="#time-to-say-goodbye-to-1d-with-an-impeccable-harmony" title="Permalink to this headline">¶</a></h2>
+<p>We dealth with <code class="docutils literal notranslate"><span class="pre">acoustic</span> <span class="pre">dissonance</span></code> quite a bit. Let’s move on with <code class="docutils literal notranslate"><span class="pre">magnetic</span> <span class="pre">resonance</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://www.youtube.com/embed/g3ENX3aHlqU&#39;</span><span class="p">,</span><span class="mi">560</span><span class="p">,</span><span class="mi">315</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="2D-BIDS.html" title="next page">Import <code class="docutils literal notranslate"><span class="pre">pybids</span></code> to query BIDS-formatted data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Agah Karakuzu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

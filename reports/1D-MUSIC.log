@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/asyncio/base_events.py", line 488, in run_until_complete
+    return future.result()
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 536, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/agah/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+empty  = np.empty(8)
+'''
+Returns of array of 8 elements w ithout EXPLICITLY INITIALIZING it with certain values
+The values we'll see are arbitrary, i.e. as they exist in the memory address allocated for our array.  
+'''
+print('np.empty: ')
+arrayviz(epmty)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-10-b6f47fb429f4>[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m '''
+[1;32m      6[0m [0mprint[0m[0;34m([0m[0;34m'np.empty: '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0marrayviz[0m[0;34m([0m[0mepmty[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mNameError[0m: name 'epmty' is not defined
+NameError: name 'epmty' is not defined
+

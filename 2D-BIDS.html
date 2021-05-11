@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import pybids to query BIDS-formatted data &#8212; Scientific computing with Python</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="NOt RApid Honestly JOyful NEvertheleSs (NORAH JONES) Readout" href="3D-ISMRMRD.html" />
+    <link rel="prev" title="Let’s say we’d like to bake a Pythonic pizza 🍕, and we need tomatoes 🍅" href="1D-MUSIC.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Scientific computing with Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1D-MUSIC.html">
+   Let’s say we’d like to bake a Pythonic pizza 🍕,  and we need tomatoes 🍅
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pybids
+    </span>
+   </code>
+   to query BIDS-formatted data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#create-a-layout-object">
+   Create a layout object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#import-nibabel">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nibabel
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#fetch-the-nii-image-that-belongs-to-the-chord1-acquisition">
+   Fetch the nii image that belongs to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     chord1
+    </span>
+   </code>
+   acquisition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#numpy-matrix-operations">
+   NumPy matrix operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#the-rolling-phantom">
+   The Rolling Phantom
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#mark-each-sphere-s-center-manually-plot-how-intensity-changes-across-trs">
+   Mark each sphere’s center manually &amp; plot how intensity changes across TRs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#read-metadata-using-bids-layout-json-to-extract-trs">
+   Read metadata using BIDS layout &amp; json to extract TRs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html">
+   NOt RApid Honestly JOyful NEvertheleSs (NORAH JONES) Readout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#norah-jones-raw-data-in-ismrm-rd-format">
+   NORAH JONES Raw Data in ISMRM-RD Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#import-ismrm-rd-modules">
+   Import ISMRM-RD modules 🧲
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#create-a-simple-list-storing-file-names">
+   Create a simple list storing file names 🗂
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#explore-acq-chord1-file">
+   Explore
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     acq-chord1
+    </span>
+   </code>
+   file 🕵️‍♀️
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#initialize-a-3d-numpy-matrix-to-store-multi-channel-raw-data">
+   Initialize a 3D
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     NumPy
+    </span>
+   </code>
+   matrix to store multi-channel raw data 🗃
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3D-ISMRMRD.html#loop-over-acquisitions-to-fill-out-raw">
+   Loop over
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     acquisitions
+    </span>
+   </code>
+   to fill out
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     raw
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/2D-BIDS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/agahkarakuzu/sunrise/main?urlpath=tree/content/2D-BIDS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/agahkarakuzu/sunrise/blob/main/content/2D-BIDS.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pybids
+    </span>
+   </code>
+   to query BIDS-formatted data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-layout-object">
+   Create a layout object
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-nibabel">
+   Import
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nibabel
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fetch-the-nii-image-that-belongs-to-the-chord1-acquisition">
+   Fetch the nii image that belongs to the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     chord1
+    </span>
+   </code>
+   acquisition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-matrix-operations">
+   NumPy matrix operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#crop-the-matrix">
+     Crop the matrix
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#crop-the-vectorized-image-1d-at-the-same-locations-we-cropped-the-matrix-chord1-im-10-90-20-100">
+     Crop the vectorized image (1D) at the same locations we cropped the matrix (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       chord1_im[10:90,20:100]
+      </span>
+     </code>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-are-wondering-why-i-tortured-you-with-linearized-indexing-as-the-first-2d-example-i-have-a-great-blog-post-suggestion-for-you-look-ma-no-for-loops-array-programming-with-numpy">
+     If you are wondering why I tortured you with linearized indexing as the first 2D example, I have a great blog post suggestion for you: Look Ma, No For-Loops: Array Programming With NumPy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-rolling-phantom">
+   The Rolling Phantom
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mark-each-sphere-s-center-manually-plot-how-intensity-changes-across-trs">
+   Mark each sphere’s center manually &amp; plot how intensity changes across TRs
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-metadata-using-bids-layout-json-to-extract-trs">
+   Read metadata using BIDS layout &amp; json to extract TRs
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="" src="assets/bids_cover.png" /></p>
+<div class="section" id="import-pybids-to-query-bids-formatted-data">
+<h1>Import <code class="docutils literal notranslate"><span class="pre">pybids</span></code> to query BIDS-formatted data<a class="headerlink" href="#import-pybids-to-query-bids-formatted-data" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bids</span> <span class="kn">import</span> <span class="n">BIDSLayout</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BIDS dataset is located at the Image folder</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./Image&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-layout-object">
+<h1>Create a layout object<a class="headerlink" href="#create-a-layout-object" title="Permalink to this headline">¶</a></h1>
+<p>This object will enable us to make queries to fetch file names using subject IDs, modalities or using BIDS entity values such as <code class="docutils literal notranslate"><span class="pre">chord1</span></code> as in <code class="docutils literal notranslate"><span class="pre">acq-chord1</span></code>.</p>
+<p>However, it does not come with readers. To that end, we will use <code class="docutils literal notranslate"><span class="pre">nibabel</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span> <span class="o">=</span> <span class="n">BIDSLayout</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">afa1a2363772</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">layout</span> <span class="o">=</span> <span class="n">BIDSLayout</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/bids/layout/layout.py</span> in <span class="ni">__init__</span><span class="nt">(self, root, validate, absolute_paths, derivatives, config, sources, regex_search, database_path, reset_database, indexer, **indexer_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span> 
+<span class="g g-Whitespace">    </span><span class="mi">135</span>         <span class="c1"># Validate that a valid BIDS project exists at root</span>
+<span class="ne">--&gt; </span><span class="mi">136</span>         <span class="n">root</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="n">validate_root</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">validate</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span> 
+<span class="g g-Whitespace">    </span><span class="mi">138</span>         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+
+<span class="nn">~/opt/anaconda3/envs/jbnew/lib/python3.6/site-packages/bids/layout/validation.py</span> in <span class="ni">validate_root</span><span class="nt">(root, validate)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span> 
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">68</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;BIDS root does not exist: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">root</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span> 
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="n">target</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;dataset_description.json&#39;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: BIDS root does not exist: /Users/agah/Desktop/RTHDEV/Applications/norah_jones/content/Image
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-nibabel">
+<h1>Import <code class="docutils literal notranslate"><span class="pre">nibabel</span></code><a class="headerlink" href="#import-nibabel" title="Permalink to this headline">¶</a></h1>
+<p>This is a highly popular Python package for working with common neuroimaging file formats. You can see user documentation <a class="reference external" href="https://nipy.org/nibabel/manual.html#manual">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="fetch-the-nii-image-that-belongs-to-the-chord1-acquisition">
+<h1>Fetch the nii image that belongs to the <code class="docutils literal notranslate"><span class="pre">chord1</span></code> acquisition<a class="headerlink" href="#fetch-the-nii-image-that-belongs-to-the-chord1-acquisition" title="Permalink to this headline">¶</a></h1>
+<p>Remember that we have 4 chords in Sunrise by Norah Jones. In the <a class="reference internal" href="1D-MUSIC.html"><span class="doc std std-doc">first notebook</span></a>, we studied the sounds made by these different TRs in detail. Now it is time to see images generated while these notes were being played.</p>
+<p>As there is not a BIDS entity for varying TRs, I used freeform <code class="docutils literal notranslate"><span class="pre">acq</span></code> entity to distinguish these files. As suffix, I used <code class="docutils literal notranslate"><span class="pre">T1w</span></code>, just for the sake of creating an example dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span><span class="o">-</span><span class="n">ismrm_ses</span><span class="o">-</span><span class="n">sunrise_acq</span><span class="o">-</span><span class="n">chord1_T1w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sub</span><span class="o">-</span><span class="n">ismrm_ses</span><span class="o">-</span><span class="n">sunrise_acq</span><span class="o">-</span><span class="n">chord2_T1w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sub</span><span class="o">-</span><span class="n">ismrm_ses</span><span class="o">-</span><span class="n">sunrise_acq</span><span class="o">-</span><span class="n">chord3_T1w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sub</span><span class="o">-</span><span class="n">ismrm_ses</span><span class="o">-</span><span class="n">sunrise_acq</span><span class="o">-</span><span class="n">chord4_T1w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">The [0] in the end is because layout.get returns a list, and we need a single entry to load data using nibabel.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># You can imagine why this layout is useful for larger datasets</span>
+<span class="n">chord1</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;ismrm&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;nii.gz&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;T1w&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">acquisition</span><span class="o">=</span><span class="s1">&#39;chord1&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">You will see that chord1 is type Nifti1Image. It contains some information about affine transformation, data shape, orientation etc.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">chord1</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">chord1</span><span class="p">)</span>
+<span class="c1">#chord1?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">To extract the &quot;image part&quot; of the Nifti, we need to use get_fdata() method of nibabel.</span>
+<span class="sd">chord1_im is an ndarray.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">chord1_im</span> <span class="o">=</span> <span class="n">chord1</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chord1_im</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="numpy-matrix-operations">
+<h1>NumPy matrix operations<a class="headerlink" href="#numpy-matrix-operations" title="Permalink to this headline">¶</a></h1>
+<p>We already know how to manipulate arrays, but what about matrices?</p>
+<div class="section" id="crop-the-matrix">
+<h2>Crop the matrix<a class="headerlink" href="#crop-the-matrix" title="Permalink to this headline">¶</a></h2>
+<p>As you noticed image is closer to the right side of the display plane. Let’s try cropping it first to center it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chord1_im</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chord1_im</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span><span class="mi">20</span><span class="p">:</span><span class="mi">100</span><span class="p">],</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks good! Now, let’s transform this matrix into a 1D array, perform this cropping on that array and reshape it back to a <code class="docutils literal notranslate"><span class="pre">90X90</span></code> image.</p>
+<p><img alt="" src="assets/reshape.png" /></p>
+<p>To convert a matrix into an array (vectorization), we can use <code class="docutils literal notranslate"><span class="pre">np.flatten()</span></code>, which by default flattens matrices in row-major (C-style) order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chord1_arry</span> <span class="o">=</span> <span class="n">chord1_im</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">chord1_arry</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="crop-the-vectorized-image-1d-at-the-same-locations-we-cropped-the-matrix-chord1-im-10-90-20-100">
+<h2>Crop the vectorized image (1D) at the same locations we cropped the matrix (<code class="docutils literal notranslate"><span class="pre">chord1_im[10:90,20:100]</span></code>)<a class="headerlink" href="#crop-the-vectorized-image-1d-at-the-same-locations-we-cropped-the-matrix-chord1-im-10-90-20-100" title="Permalink to this headline">¶</a></h2>
+<p>In row dimension, we omitted the first and last 10 elements from the matrix. To achieve this in an array, we need to drop 0th, 100th, 200th … elements from the array to begin with the rows… Dropping those elements would shift the array by 10 elements, now what about the ones at the end of each row… 🤯 But wait… Do we need to actully think about this? Of course not!</p>
+<p>That’s when we can use <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html"><code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code></a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ravel_multi_index.html"><code class="docutils literal notranslate"><span class="pre">numpy.ravel_multi_index</span></code></a> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This should create a (2,80,80) matrix. The first matrix (xy_idx[0,:,:]) stores the row, and the second</span>
+<span class="sd">one stores the column indexes corresponding to the slicing by [10:90,20:100].</span>
+
+<span class="sd">IMPORTANT: </span>
+<span class="sd">Axis corrdinates vs matrix coordinates. </span>
+
+<span class="sd">We pass indexing=&#39;ij&#39; argument for NumPy NOT TO transpose our matrix. Documentation reads:</span>
+<span class="sd">In the 2-D case with inputs of length M and N, the outputs are of shape (N, M) for ‘xy’ indexing </span>
+<span class="sd">and (M, N) for ‘ij’ indexing. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">xy_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">))</span>
+
+<span class="c1"># Here, we find &quot;linear (flattened) indexes of our 2D slice&quot;</span>
+<span class="n">lin_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel_multi_index</span><span class="p">([</span><span class="n">xy_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:],</span><span class="n">xy_idx</span><span class="p">[</span><span class="mi">1</span><span class="p">,:,:]],</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># Take elements indexed by lin_idx from the flattened image</span>
+<span class="n">cropped</span> <span class="o">=</span> <span class="n">chord1_arry</span><span class="p">[</span><span class="n">lin_idx</span><span class="p">]</span>
+
+<span class="c1"># Reshape cropped image (80,80)</span>
+<span class="n">cropped</span> <span class="o">=</span> <span class="n">cropped</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="c1"># Display the image</span>
+<span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cropped</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">To prove ourselves we did the right thing, let&#39;s subtract matrix-cropped and array-corrped </span>
+<span class="sd">images from each other and display them.</span>
+
+<span class="sd">TASK:</span>
+<span class="sd">Now try the same thing after dropping indexing=&#39;ij&#39; argument from the np.meshgrid function. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">dif</span> <span class="o">=</span> <span class="n">chord1_im</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span><span class="mi">20</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">-</span> <span class="n">cropped</span>
+<span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dif</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="if-you-are-wondering-why-i-tortured-you-with-linearized-indexing-as-the-first-2d-example-i-have-a-great-blog-post-suggestion-for-you-look-ma-no-for-loops-array-programming-with-numpy">
+<h2>If you are wondering why I tortured you with linearized indexing as the first 2D example, I have a great blog post suggestion for you: <a class="reference external" href="https://realpython.com/numpy-array-programming/#:%7E:text=When%20looping%20over%20an%20array,cleaner%20and%20faster%20Python%20code.">Look Ma, No For-Loops: Array Programming With NumPy</a><a class="headerlink" href="#if-you-are-wondering-why-i-tortured-you-with-linearized-indexing-as-the-first-2d-example-i-have-a-great-blog-post-suggestion-for-you-look-ma-no-for-loops-array-programming-with-numpy" title="Permalink to this headline">¶</a></h2>
+<p>When it comes to computation, there are really three concepts that lend NumPy its power:</p>
+<ul class="simple">
+<li><p>Vectorization</p></li>
+<li><p>Broadcasting</p></li>
+<li><p>Indexing</p></li>
+</ul>
+<p>Now you know vectorization and how to map matrix indexes onto linearized indexes. To go from linear to vector indexes, you can use <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html"><code class="docutils literal notranslate"><span class="pre">np.unravel_index</span></code></a>.</p>
+<p>We already know <code class="docutils literal notranslate"><span class="pre">broadcasting</span></code> and <code class="docutils literal notranslate"><span class="pre">indexing</span></code> from the first notebook. Looks like you know how to make the most out of NumPy now!</p>
+</div>
+</div>
+<div class="section" id="the-rolling-phantom">
+<h1>The Rolling Phantom<a class="headerlink" href="#the-rolling-phantom" title="Permalink to this headline">¶</a></h1>
+<p>We will rotate our image by 10 degrees 36 times, and stack those images together to create an animation using Plotly :)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span><span class="p">,</span> <span class="n">misc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s work with the cropped image</span>
+<span class="n">chord1_im</span> <span class="o">=</span> <span class="n">chord1_im</span> <span class="o">=</span> <span class="n">chord1</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()[</span><span class="mi">10</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span><span class="mi">20</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># This is how you can rotate an image by 30 degrees</span>
+<span class="n">img_rot</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">chord1_im</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span><span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">rot</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">360</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">chord1_im</span><span class="p">,</span><span class="n">rot</span><span class="p">,</span><span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="o">/</span><span class="n">cur</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">frames</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+<span class="n">frames</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">animation_frame</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="assets/stack.png" /></p>
+<p>In the example above, we initialized a list (<code class="docutils literal notranslate"><span class="pre">frames</span></code>) to create a collection of 2D image stacks in a Python list, then we used np.array() create a numpy object of it. This approach works fairly well. Depending on the dimension orders you want, you can use <code class="docutils literal notranslate"><span class="pre">np.reshape</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frames_reshaped</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">80</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
+<span class="n">frames_reshaped</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy also provides some functions to stack array/matrix data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_chord_im</span><span class="p">(</span><span class="n">acq_val</span><span class="p">):</span>
+    <span class="n">chord</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;ismrm&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;nii.gz&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;T1w&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">acquisition</span><span class="o">=</span><span class="n">acq_val</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">chord</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">chord</span><span class="p">)</span>
+    <span class="n">chord_im</span> <span class="o">=</span> <span class="n">chord</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">chord_im</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chord1</span> <span class="o">=</span> <span class="n">get_chord_im</span><span class="p">(</span><span class="s1">&#39;chord1&#39;</span><span class="p">)</span>
+<span class="n">chord2</span> <span class="o">=</span> <span class="n">get_chord_im</span><span class="p">(</span><span class="s1">&#39;chord2&#39;</span><span class="p">)</span>
+<span class="n">chord3</span> <span class="o">=</span> <span class="n">get_chord_im</span><span class="p">(</span><span class="s1">&#39;chord3&#39;</span><span class="p">)</span>
+<span class="n">chord4</span> <span class="o">=</span> <span class="n">get_chord_im</span><span class="p">(</span><span class="s1">&#39;chord4&#39;</span><span class="p">)</span>
+
+<span class="n">ch12_dim0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">chord1</span><span class="p">,</span> <span class="n">chord2</span><span class="p">))</span>
+<span class="n">ch12_dim1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">chord1</span><span class="p">,</span> <span class="n">chord2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ch12_dim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">chord1</span><span class="p">,</span> <span class="n">chord2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># You can define along which axis the images will be stacked</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Default np.stack axis: &#39;</span><span class="p">,</span> <span class="n">ch12_dim0</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">np.stack axis=1: &#39;</span><span class="p">,</span> <span class="n">ch12_dim1</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+      <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">np.stack axis=2: &#39;</span><span class="p">,</span> <span class="n">ch12_dim2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stack all chord images using np.dstack on the last axis</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">chord1</span><span class="p">,</span> <span class="n">chord2</span><span class="p">,</span> <span class="n">chord3</span><span class="p">,</span> <span class="n">chord4</span><span class="p">))</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mark-each-sphere-s-center-manually-plot-how-intensity-changes-across-trs">
+<h1>Mark each sphere’s center manually &amp; plot how intensity changes across TRs<a class="headerlink" href="#mark-each-sphere-s-center-manually-plot-how-intensity-changes-across-trs" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="c1"># Define sphere point locations</span>
+<span class="c1"># I listed these points by hovering over the image. Note that x and y locations </span>
+<span class="c1"># displayed on hover must be transposed while slicing the matrix. Again, axis coordinates</span>
+<span class="c1"># vs matrix coordinates. </span>
+
+<span class="n">sphere_centers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">39</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">43</span><span class="p">],</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">39</span><span class="p">],</span><span class="s2">&quot;T1&quot;</span><span class="p">:[</span><span class="s2">&quot;T1: 1989ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 1454ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 984ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 706ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 496ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 351ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 247ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 175ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 125ms&quot;</span><span class="p">,</span><span class="s2">&quot;T1: 89ms&quot;</span><span class="p">]}</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">animation_frame</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sphere_centers</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">sphere_centers</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span><span class="n">text</span><span class="o">=</span><span class="n">sphere_centers</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">],</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is how we simply slice our stack to see signal change across 4 TRs in 10 spheres</span>
+<span class="c1"># Pay attention to the order of x and y</span>
+<span class="n">signal_vs_tr</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="n">sphere_centers</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span><span class="n">sphere_centers</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],:]</span>
+<span class="n">signal_vs_tr</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="read-metadata-using-bids-layout-json-to-extract-trs">
+<h1>Read metadata using BIDS layout &amp; json to extract TRs<a class="headerlink" href="#read-metadata-using-bids-layout-json-to-extract-trs" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">TRs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">acq_val</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;chord1&#39;</span><span class="p">,</span><span class="s1">&#39;chord2&#39;</span><span class="p">,</span><span class="s1">&#39;chord3&#39;</span><span class="p">,</span><span class="s1">&#39;chord4&#39;</span><span class="p">]:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;ismrm&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;T1w&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">acquisition</span><span class="o">=</span><span class="n">acq_val</span><span class="p">)[</span><span class="mi">0</span><span class="p">],)</span>
+    <span class="n">cur_meta</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">TRs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_meta</span><span class="p">[</span><span class="s1">&#39;mri_RepetitionTime&#39;</span><span class="p">])</span>
+
+<span class="n">TRs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">TRs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TRs are: &#39;</span><span class="p">,</span> <span class="n">TRs</span><span class="p">)</span>
+
+<span class="c1"># Sort them and obtain sorted idxs (ASCENDING ORDER)</span>
+<span class="n">sort_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">TRs</span><span class="p">)</span>
+<span class="n">sorted_TR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">TRs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sort idxs are: &#39;</span><span class="p">,</span> <span class="n">sort_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorted TRs are: &#39;</span><span class="p">,</span> <span class="n">sorted_TR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># List comprehension is a powerful python feature. </span>
+<span class="c1"># Here, we use it to create a string for tagging pandas dataframe colums </span>
+<span class="c1"># with the respective TRs.</span>
+<span class="n">trlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TR:&quot;</span> <span class="o">+</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sorted_TR</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)]</span>
+
+<span class="c1"># Using the sort index, we are re-arranging the order of intensity values.</span>
+<span class="n">result</span><span class="o">=</span><span class="p">[</span><span class="n">signal_vs_tr</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sort_index</span><span class="p">]</span>
+<span class="c1"># Create a numpy object </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># Convert numpy matrix&#39;s transpose into a pandas dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">trlist</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Spheres&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span><span class="s1">&#39;S2&#39;</span><span class="p">,</span><span class="s1">&#39;S3&#39;</span><span class="p">,</span><span class="s1">&#39;S4&#39;</span><span class="p">,</span><span class="s1">&#39;S5&#39;</span><span class="p">,</span><span class="s1">&#39;S6&#39;</span><span class="p">,</span><span class="s1">&#39;S7&#39;</span><span class="p">,</span><span class="s1">&#39;S8&#39;</span><span class="p">,</span><span class="s1">&#39;S9&#39;</span><span class="p">,</span><span class="s1">&#39;S10&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;T1ms&quot;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">sphere_centers</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Spheres&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TR:9.6&quot;</span><span class="p">,</span><span class="s2">&quot;TR:12.9&quot;</span><span class="p">,</span><span class="s2">&quot;TR:13.1&quot;</span><span class="p">,</span><span class="s2">&quot;TR:14.45&quot;</span><span class="p">],</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;plotly_dark&#39;</span><span class="p">,</span><span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;T1ms&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">hovermode</span><span class="o">=</span><span class="s2">&quot;x unified&quot;</span><span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="1D-MUSIC.html" title="previous page">Let’s say we’d like to bake a <code class="docutils literal notranslate"><span class="pre">Pythonic</span> <span class="pre">pizza</span> <span class="pre">🍕</span></code>,  and we need tomatoes <code class="docutils literal notranslate"><span class="pre">🍅</span></code></a>
+    <a class='right-next' id="next-link" href="3D-ISMRMRD.html" title="next page">NOt RApid Honestly JOyful NEvertheleSs (NORAH JONES) Readout</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Agah Karakuzu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
