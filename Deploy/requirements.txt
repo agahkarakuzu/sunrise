@@ -10,3 +10,4 @@ h5py==3.1.0
 audioread==2.1.9
 resampy==0.2.2
 numba==0.53.1
+pydot

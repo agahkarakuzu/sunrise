@@ -1,3 +1,5 @@
+FROM jupyter/base-notebook:016833b15ceb
+
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive

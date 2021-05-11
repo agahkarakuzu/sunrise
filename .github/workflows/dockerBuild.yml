@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: BUILD PUSH DOCKER
-        run: sh ./Deploy
+        run: sh ./Deploy/build.sh
         env:
           GITHUB_WORKSPACE: ${{github.workspace}}
           DOCKER_USER: ${{secrets.DOCKER_USER}}
