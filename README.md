@@ -1,19 +1,27 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD) [![](https://img.shields.io/badge/DockerHub-sunrise-blue?logo=Docker)](https://hub.docker.com/repository/docker/agahkarakuzu/sunrise) [![.github/workflows/dockerBuild.yml](https://github.com/agahkarakuzu/sunrise/actions/workflows/dockerBuild.yml/badge.svg)](https://github.com/agahkarakuzu/sunrise/actions/workflows/dockerBuild.yml)
-# Scientific computing with Python
+<p align="center"> <a href="https://www.youtube.com/watch?v=XX0UGblIwMM"><img width="90" src="https://i.pinimg.com/originals/19/7b/36/197b365922d1ea3aa1a932ff9bbda4a6.png"></a>
 
-Course material presented at [ISMRM 2021 Sunrise Educational Session](https://www.ismrm.org/21/program-files/T-30.htm) for Python Programming & Scientific Computing.
+<p align="center">  <a href="https://www.youtube.com/watch?v=XX0UGblIwMM"> The XX - Intro | MRI edition </a></p> 
+<p align="center"> <a href="https://agahkarakuzu.github.io/sunrise"><img src="https://img.shields.io/badge/Jupyter%20Book-Interactive%20webpage-ff0000?logo=GitBook&style=for-the-badge&logoColor=white"></a> </p>
 
-[![](assets/cover.png)](https://www.youtube.com/watch?v=XX0UGblIwMM)
+<p align="center"> <a href="https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD"><img src="https://mybinder.org/badge_logo.svg"></a> <a href="https://hub.docker.com/repository/docker/agahkarakuzu/sunrise"><img src="https://img.shields.io/badge/DockerHub-sunrise-blue?logo=Docker"></a> <a href="https://github.com/agahkarakuzu/sunrise/actions/workflows/dockerBuild.yml"><img src="https://github.com/agahkarakuzu/sunrise/actions/workflows/dockerBuild.yml/badge.svg"></a> </p>
 
-[⏯  The XX - Intro | MRI edition](https://www.youtube.com/watch?v=XX0UGblIwMM)
+
+
+<h1 align="center"> Scientific computing with Python </h1>
+
+<p align="center"> Course material presented at <a href="https://www.ismrm.org/21/program-files/T-30.htm">ISMRM 2021 Sunrise Educational Session for Python Programming & Scientific Computing. </p>
+
+<p align="center"> <a href="https://www.youtube.com/watch?v=XX0UGblIwMM"><img src="assets/cover.png"></a>
+
+
 
 ### 📚 3 Notebooks for 3 dimensions of MRI
 
 * [1D-MUSIC.ipynb](/1D-MUSIC.ipynb) for basic NumPy operations and SciPy functions to create harmonious MRI melodies.
 ![](assets/wave_np.png)
-* [2D-BIDS.ipynb](/1D-MUSIC.ipynb) for querying reconstructed images using BIDS layout, loading them using `nibabel`, `parsing them` using `NumPy` and creating interactive plots using `Plotly`.
+* [2D-BIDS.ipynb](/2D-BIDS.ipynb) for querying reconstructed images using BIDS layout, loading them using `nibabel`, `parsing them` using `NumPy` and creating interactive plots using `Plotly`.
 ![](assets/notebook_2.png)
-* [3D-ISMRMD.ipynb](/1D-MUSIC.ipynb) for reading ISMRM-RD k-space data (16 channels) using `ismrmrd-python`, reconstructing them using `SciPy` and creating interactive plots using `Plotly`.
+* [3D-ISMRMRD.ipynb](/3D-ISMRMRD.ipynb) for reading ISMRM-RD k-space data (16 channels) using `ismrmrd-python`, reconstructing them using `SciPy` and creating interactive plots using `Plotly`.
 ![](assets/ismrmrd_structure.png)
 ### 🕸  You can execute the notebooks online
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agahkarakuzu/sunrise/HEAD)
