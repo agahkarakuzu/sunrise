@@ -5,10 +5,10 @@
 
 #######################################################################################
 # Book settings
-title                       : "NeuroLibre preprint template"  # The title of the book. Will be placed in the left navbar.
-author                      : Robo Neuro  # The author of the book
+title                       : "Scientific computing with Python"  # The title of the book. Will be placed in the left navbar.
+author                      : Agah Karakuzu  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
-logo                        : "../images/neurolibre-logo.png"  # A path to the book logo
+logo                        : "../assets/logo.svg"  # A path to the book logo
 exclude_patterns            : []  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
 #######################################################################################
@@ -23,10 +23,10 @@ execute:
 html:
   favicon                   : ""  # A path to a favicon image
   use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
-  use_repository_button     : false  # Whether to add a link to your repository button
-  use_issues_button         : false  # Whether to add an "open an issue" button
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
-  extra_footer              : ""  # Will be displayed underneath the footer.
+  extra_footer              : "Agah Karakuzu"  # Will be displayed underneath the footer.
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
@@ -36,11 +36,17 @@ html:
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
   binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
-  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
+  colab_url: "https://colab.research.google.com"
+  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
 
 repository:
-  url                       : https://github.com/neurolibre/template  # The URL to your book's repository
+  url                       : https://github.com/agahkarakuzu/sunrise  # The URL to your book's repository
   path_to_book              : "content"  # A path to your book's folder, relative to the repository root.
   branch                    : main  # Which branch of the repository should be used when creating links
+
+sphinx:
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
 
 #######################################################################################

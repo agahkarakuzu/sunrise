@@ -1,3 +1,11 @@
-- file: 00-simple_markdown
-- file: 01-simple_notebook
-- file: 02-simple_myst
+- file: intro
+
+- part: 1D - MUSIC 
+  chapters:
+  - file: 1D-MUSIC
+- part: 2D - BIDS
+  chapters:
+  - file: 2D-BIDS
+- part: 3D - ISMRMRD
+  chapters:
+  - file: 3D-ISMRMRD
