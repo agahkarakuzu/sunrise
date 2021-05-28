@@ -17,22 +17,39 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-empty  = np.empty(8)
+my_sound = load_audio('../WavMRI/3DSPGR_TR12ms.wav') # Select one from WavMRI folder
+
+tduration=
 '''
-Returns of array of 8 elements w ithout EXPLICITLY INITIALIZING it with certain values
-The values we'll see are arbitrary, i.e. as they exist in the memory address allocated for our array.  
+TASK: Assign tduration with the duration of the signal (in seconds, but be accurate!)
 '''
-print('np.empty: ')
-arrayviz(epmty)
+
+sin_freq = 10
+'''
+Choose a lower (e.g. 2) or a higher (e.g. 1000) sin_freq and see how they affect the output.
+'''
+
+sf = my_sound['fsamp'] 
+
+sin_wave = (np.sin(2*np.pi*np.arange(sf*tduration)*sin_freq/sf))/2
+'''
+Playground 1
+Tip: You can try other trigonometric functions in numpy as well :) 
+'''
+
+result = my_sound['signal'] * sin_wave
+'''
+Playground 2
+Tip: Add, subtract & multiply your sound with this sin_wave
+'''
+
+make_audio(result,my_sound['fsamp']) # Hear it!
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-10-b6f47fb429f4>[0m in [0;36m<module>[0;34m[0m
-[1;32m      5[0m '''
-[1;32m      6[0m [0mprint[0m[0;34m([0m[0;34m'np.empty: '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 7[0;31m [0marrayviz[0m[0;34m([0m[0mepmty[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;31mNameError[0m: name 'epmty' is not defined
-NameError: name 'epmty' is not defined
+[0;36m  File [0;32m"<ipython-input-27-a5ad931b9983>"[0;36m, line [0;32m3[0m
+[0;31m    tduration=[0m
+[0m              ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+
+SyntaxError: invalid syntax (<ipython-input-27-a5ad931b9983>, line 3)
 
