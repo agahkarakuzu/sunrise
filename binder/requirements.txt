@@ -1,6 +1,6 @@
 numpy==1.18.4
 scipy==1.5.4
-plotly==4.14.0
+plotly
 librosa==0.8.0
 lolviz==1.4.4
 nibabel==3.2.0
@@ -12,4 +12,4 @@ resampy==0.2.2
 numba==0.53.1
 repo2data
 jupyter-book==0.12.1
-jupyter-dash
+jupyter-plotly
