@@ -1,0 +1,12 @@
+numpy==1.18.4
+scipy==1.5.4
+plotly==4.14.0
+librosa==0.8.0
+lolviz==1.4.4
+nibabel==3.2.0
+ismrmrd==1.7.2
+pandas==0.25.3
+h5py==3.1.0
+audioread==2.1.9
+resampy==0.2.2
+numba==0.53.1
