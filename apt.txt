@@ -1,4 +1,0 @@
-python-pydot
-python-pydot-ng
-graphviz
-libsndfile1
